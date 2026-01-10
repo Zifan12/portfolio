@@ -27,7 +27,6 @@ Portfolio Website/
 │   ├── projects/          # Project screenshots
 │   └── robot/             # Chatbot avatar
 ├── documents/              # PDF documents (certificates)
-├── favicon/                # Favicon files
 ├── backend/                # Python RAG backend
 │   ├── main.py            # FastAPI server
 │   ├── rag.py             # RAG retrieval logic
