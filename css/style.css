@@ -45,7 +45,7 @@ body {
 
 }
 body.home {
-  background: url('background1.jpeg') no-repeat center center fixed;
+  background: url('../images/backgrounds/background1.jpeg') no-repeat center center fixed;
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -62,7 +62,7 @@ body.home {
   pointer-events: auto; /* allow hover interaction */
 }
 #particles-js canvas {
-  pointer-events: auto;
+  pointer-events: auto; /* allow hover interaction with particles */
 }
 
 
@@ -433,14 +433,12 @@ section .main-container {
 
 
 #education {
-  background-color: rgba(0, 0, 0, 0.7);
   padding: 0px 150px;
   min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
   /* background: linear-gradient(to bottom, #05030a, #0a0f2c);*/
-  
+
 }
-
-
 
 .timeline-horizontal {
   margin-left: auto;
@@ -569,7 +567,7 @@ section .main-container {
 
 .education-background .timeline-content.content-hta,
 .education-background .timeline-content.content-uofa {
-  background: url('background1.jpeg') no-repeat center center fixed;
+  background: url('../images/backgrounds/background1.jpeg') no-repeat center center fixed;
   background-size: cover;
   border-radius: 100px;
   padding: 20px;
@@ -588,35 +586,92 @@ section .main-container {
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
+/* -------------------- Skills Styling ------------------------------------------------------------------------------------------------------------------------------------------- */
+#skills {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 100px 150px;
+  min-height: 100vh;
+}
+
+.skills-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
   justify-items: center;
-  padding: 20px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .skill-card {
-  background-color: #f0f0f0;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 30px 20px;
   text-align: center;
   border-radius: 15px;
-  transition: transform 0.3s;
+  border: 2px solid rgba(0, 68, 255, 0.3);
+  transition: all 0.3s ease;
   font-size: 1.2rem;
+  color: white;
+  width: 100%;
+  min-width: 150px;
+  box-shadow: 0 0 20px rgba(0, 68, 255, 0.2);
 }
 
 .skill-card i {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  margin-bottom: 15px;
   display: block;
+  color: #06a8f3;
+  transition: all 0.3s ease;
+}
+
+.skill-icon-img {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 15px;
+  display: block;
+  object-fit: contain;
+  transition: all 0.3s ease;
 }
 
 .skill-card:hover {
-  transform: scale(1.05);
-  background-color: #e0e0e0;
+  transform: translateY(-10px) scale(1.05);
+  border-color: #06a8f3;
+  box-shadow: 0 0 30px rgba(6, 168, 243, 0.6), 0 0 60px rgba(0, 68, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* -------------------- Skills Styling ------------------------------------------------------------------------------------------------------------------------------------------- */
+.skill-card:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.skill-card:hover .skill-icon-img {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.skill-card span {
+  display: block;
+  font-weight: 500;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover span {
+  color: #06a8f3;
+}
+
+
 
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -644,6 +699,7 @@ section .main-container {
   width: 100vw;
   width: 100vw;
   margin-left: -150px;
+  padding: 80px 0;
 }
 
 .project-card {
@@ -725,6 +781,7 @@ section .main-container {
   top: 47%;
 }
 
+
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   color: rgb(6, 105, 204);
@@ -748,7 +805,7 @@ section .main-container {
   height: 12px;
   background: #ffffff;
   opacity: 0.4;
-  margin: 0 5 px;
+  margin: 0 5px;
 
 
 
@@ -1646,9 +1703,6 @@ section .main-container {
 }
 
     
-
-
-
 
 
 

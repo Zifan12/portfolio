@@ -6,24 +6,21 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
       <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
       <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-      <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
-      <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-      <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-      <link rel="shortcut icon" href="favicon/favicon.ico" />
-      <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-      <link rel="manifest" href="favicon/site.webmanifest" />
-      <link rel="stylesheet" href="style.css">
-      <title>Zifan's Portfolio</title>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/chatbot.css">
+      <link rel="icon" type="image/png" href="images/profile/profile_image.png">
+      <link rel="shortcut icon" type="image/png" href="images/profile/profile_image.png">
+      <title>Zifan Portfolio</title>
    </head>
    <body class="home">
       <!-- Particle container-->
       <div id="particles-js"></div>
       
-      <!-- navgaition menu-->
+      <!-- navigation menu-->
       <nav>
          <div class="nav-container">
             <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
-               <img class="nav-icon" src="icon2.png" alt="">
+               <img class="nav-icon" src="images/icons/icon2.png" alt="">
                <span>Zifan Li</span>
             </div>
             <div class="links">
@@ -55,7 +52,7 @@
          <div class="main-container">
             <!-- <div class="profile-wrapper"> might not need this--> 
                <div class="profile-image" data-aos="zoom-out" data-aos-duration="1500">
-                  <img src="profile_image.png" alt="">
+                  <img src="images/profile/profile_image.png" alt="">
                </div>
             <!-- </div> -->
             <div class="content">
@@ -65,7 +62,7 @@
                <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">
                   I'm a <span id="typewriter-text"></span>
                </div>
-               <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Third-year CS student working toward a career in AI engineering — developing skills in machine learning, generative AI, and building real-world projects.</p>
+               <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Third-year Computer Science student specializing in AI engineering, building real-world machine learning and generative AI systems with a strong focus on practical, production-ready projects.</p>
                <div class="social-links">
                   <a href="https://github.com/Zifan12" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"> 
                      <i class="fa-brands fa-github"></i></a>
@@ -87,14 +84,14 @@
             <div class="title about-title" data-aos="fade-up" data-aos-duration="1500"><span>Introduction</span></div>
             <div class="about-details">
                <div class="left" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
-                  <img src="img.jpg" alt = ""/>
+                  <img src="images/profile/intro.png" alt = ""/>
                </div>
                <div class="right">
                <div class="topic"  data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200">My Mission</div>
                   <p  data-aos="flip-down" data-aos-duration="1500" data-aos-delay="300">
-                     I'm a third-year Computer Science student at University of Alberta, passionate about artificial intelligence, machine learning, and building creative technical solutions.
-                     I’m currently focused on hands-on projects involving neural networks, generative AI, and automation tools. My goal is to deepen my understanding of modern AI systems and apply them to real-world problems.
-                     I’m actively seeking AI-focused internships for Summer 2026.
+                     I’m a third-year Computer Science student at the University of Alberta focused on AI engineering. 
+                     I build hands-on machine learning and generative AI systems through exploratory and project-based work, with an emphasis on understanding how modern AI systems are designed, evaluated, and deployed.
+                     I’m actively seeking internships for Summer 2026 where I can continue developing as an engineer while contributing to real-world projects.
                   </p>
                   <div class="button"  data-aos="zoom-in-left" data-aos-duration="1500" data-aos-delay="400">
                      <a href="https://www.youtube.com/" target="_blank" class="download-btn">Download CV</a>
@@ -115,7 +112,7 @@
             <!-- High School -->
             <div class="timeline-item item-hta" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-delay="300">
                <div class="timeline-icon icon-hta">
-                  <img src="HTA2.png" alt="Holy Trinity Academy">
+                  <img src="images/education/HTA2.png" alt="Holy Trinity Academy">
                </div>
                <div class="education-background">
                   <div class="timeline-content content-hta">
@@ -129,7 +126,7 @@
             <!-- University -->
             <div class="timeline-item item-uofa"  data-aos="zoom-in-right" data-aos-duration="1500" data-aos-delay="600">
                <div class="timeline-icon icon-uofa">
-                  <img src="UofA.png" alt="University of Alberta">
+                  <img src="images/education/UofA.png" alt="University of Alberta">
                </div>
                <div class="education-background">
                   <div class="timeline-content content-uofa">
@@ -147,12 +144,70 @@
       </div>
       </section>
 
-      <!-- Skills Section Start 
+      <!-- Skills Section Start -->
       <section class="skills" id="skills">
-
-
+         <div class="content">
+            <div class="title skills-title" data-aos="fade-up" data-aos-duration="1500">
+               <span>Skills</span>
+            </div>
+            <div class="skills-grid">
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
+                  <img src="images/icons/Python.svg" alt="Python" class="skill-icon-img"></i>
+                  <span>Python</span>
+               </div>
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">  
+                  <img src="images/icons/scikit-learn.svg" alt="Scikit-learn" class="skill-icon-img">
+                  <span>Scikit-learn</span>
+               </div>
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/PyTorch.svg" alt="PyTorch" class="skill-icon-img">
+                  <span>PyTorch</span>
+               </div>
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/langchain-color.svg" alt="langchain/langgraph" class="skill-icon-img">
+                  <span>LangChain/LangGraph</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/Matplotlib.svg" alt="Matplotlib" class="skill-icon-img">
+                  <span>Matplotlib</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/SQLite.svg" alt="SQLite" class="skill-icon-img">
+                  <span>SQLite</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/numpy-svgrepo-com.svg" alt="NumPy" class="skill-icon-img">
+                  <span>NumPy</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/github-mark.svg" alt="github" class="skill-icon-img">
+                  <span>GitHub</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/openai-svgrepo-com.svg" alt="OpenAI" class="skill-icon-img">
+                  <span>OpenAI API</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/Chroma--Streamline-Svg-Logos.svg" alt="Chroma" class="skill-icon-img">
+                  <span>ChromaDB</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/FastAPI.svg" alt="FastAPI" class="skill-icon-img">
+                  <span>FastAPI</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/C.svg" alt="C" class="skill-icon-img">
+                  <span>C</span>
+               </div>   
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+                  <img src="images/icons/Java.svg" alt="Java" class="skill-icon-img">
+                  <span>Java</span>
+               </div>   
+            </div>
+         </div>
       </section>
-      -->
+
+   
 
       <!-- Projects Section Start -->
       <section class="projects" id="projects">
@@ -171,12 +226,12 @@
                         <!-- Top Box: Image -->
                         <div class="project-card-top" data-aos="zoom-in"  data-aos-duration="1200" data-aos-delay="200">
                            <a href="https://github.com/Zifan12/heart-disease-predictor" target="_blank" class="project-card">
-                           <img src="heart.png" alt="Heart Disease">
+                           <img src="images/projects/heart.png" alt="Heart Disease">
                            </a>
                         </div>
 
                         <!-- Bottom Box: Info -->
-                        <div class="project-card-bottom" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
+                        <div class="project-card-bottom"  data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
                            <h3 class="project-title">Heart Disease Predictor</h3>
                            <p class="project-description">Compares Multiple Machine Learning Models to predict heart disease based on patient data. The final model is deployed with Streamlit and includes SHAP interpretability.</p>
                            <div class="project-tags">
@@ -197,20 +252,21 @@
 
                         <!-- Top Box: Image -->
                         <div class="project-card-top" data-aos="zoom-in"  data-aos-duration="1200" data-aos-delay="200">
-                           <a href="https://www.youtube.com/" target="_blank" class="project-card">
-                           <img src="yt.png" alt="YouTube Project">
+                           <a href="https://github.com/Zifan12/portfolio" target="_blank" class="project-card">
+                           <img src="images/projects/portfolio_website.png" alt="Portfolio Website Project With AI Chatbot">
                            </a>
                         </div>
 
                         <!-- Bottom Box: Info -->
                         <div class="project-card-bottom" data-aos="fade-up"  data-aos-duration="1200" data-aos-delay="400">
-                           <h3 class="project-title">YouTube Analytics Dashboard</h3>
-                           <p class="project-description">A dashboard that visualizes YouTube data with charts and engagement insights using React and Chart.js.</p>
+                           <h3 class="project-title">Portfolio Website Project With AI Chatbot</h3>
+                           <p class="project-description">A personal portfolio featuring an AI-powered chatbot built with Retrieval-Augmented Generation (RAG). The chatbot answers questions about my background using semantic search over my documents.</p>
                            <div class="project-tags">
-                           <span>JavaScript</span>
-                           <span>React</span>
-                           <span>Chart.js</span>
-                           <span>API</span>
+                              <span>Python</span>
+                              <span>FastAPI</span>
+                              <span>RAG</span>
+                              <span>OpenAI API</span>
+                              <span>ChromaDB</span>
                            </div>
                         </div>
 
@@ -221,27 +277,31 @@
                   <div class="swiper-slide">
                      <div class="project-box">
 
-                        <!-- Top Box: Image -->
+                      
                         <div class="project-card-top" data-aos="zoom-in"  data-aos-duration="1200" data-aos-delay="200">
-                           <a href="https://www.google.com/" target="_blank" class="project-card">
-                           <img src="icon3.png" alt="YouTube Project">
+                           <a href="https://github.com/CMPUT301F25matcha/matcha-events" target="_blank" class="project-card">
+                           <img src="images/icons/icon3.png" alt="Lottery System Project">
                            </a>
                         </div>
 
-                        <!-- Bottom Box: Info -->
+                       
                         <div class="project-card-bottom" data-aos="fade-up"  data-aos-duration="1200" data-aos-delay="400">
-                           <h3 class="project-title">YouTube Analytics Dashboard</h3>
-                           <p class="project-description">A dashboard that visualizes YouTube data with charts and engagement insights using React and Chart.js.</p>
+                           <h3 class="project-title">Event Lottery System</h3>
+                           <p class="project-description">An Android event lottery management system built in CMPUT 301 course with 6 group members in Android Studio using Java. Supports event creation, participant registration via QR codes, automated lottery draws,
+                               and real-time updates using Firebase. 
+                           </p>
                            <div class="project-tags">
-                           <span>JavaScript</span>
-                           <span>React</span>
-                           <span>Chart.js</span>
-                           <span>API</span>
+                           <span>Java</span>
+                           <span>Android Studio</span>
+                           <span>Firebase</span>
+                           <span>Group work</span>
+                           <span>Course Project</span>
                            </div>
                         </div>
 
                      </div>
                   </div>
+               
 
                   
 
@@ -267,7 +327,7 @@
                <div class="cert-wrapper" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
                   <h3 class="cert-title">Machine Learning Specialization</h3>
                   <div class="cert-card">
-                     <canvas class="pdf-canvas" data-url="cert1.pdf"></canvas>
+                     <canvas class="pdf-canvas" data-url="documents/cert1.pdf"></canvas>
                   </div>
                   
                   <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/75ZCZ2E1XARW"
@@ -276,24 +336,25 @@
 
                <!-- Certificate 2 -->
                <div class="cert-wrapper" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">
-                  <h3 class="cert-title">Python Specialization</h3>
+                  <h3 class="cert-title">Data Camp - AI Engineer</h3>
                   <div class="cert-card">
-                     <canvas class="pdf-canvas" data-url="cert1.pdf"></canvas>
+                     <canvas class="pdf-canvas" data-url="documents/cert2.pdf"></canvas>
                   </div>
-                  <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/75ZCZ2E1XARW"
+                  <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/d265be97edc6009c94f6f6d289fb3c37544837ff?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink"
                      target="_blank" class="view-button">View Credential</a>
                </div>
                
-               <!-- Certificate 3 -->
+               <!-- Certificate 3 
                <div class="cert-wrapper" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">
                   <h3 class="cert-title">Third Specialization</h3>
                   <div class="cert-card">
-                     <canvas class="pdf-canvas" data-url="cert1.pdf"></canvas>
+                     <canvas class="pdf-canvas" data-url="documents/cert1.pdf"></canvas>
                   </div>
             
                   <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/75ZCZ2E1XARW"
                      target="_blank" class="view-button">View Credential</a>
                </div>
+             -->
 
             
             </div>
@@ -314,13 +375,57 @@
          </form>
 
          <div class="contact-info" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700" >
-            <p>Email: <a href="mailto:you@example.com">zifan.li912@gmail.com</a></p>
+            <p>Email: <a href="mailto:zifan.li912@gmail.com">zifan.li912@gmail.com</a></p>
             <p>GitHub: <a href="https://github.com/Zifan12" target="_blank">Zifan12</a></p>
             <p>LinkedIn: <a href="https://www.linkedin.com/in/zifan-li-a9889b22a/" target="_blank">Zifan Li Edmonton, AB</a></p>
          </div>
       </div>
       </section>
+      
+      <!-- Chatbot toggle (bottom right) -->
+      <button class="chatbot-toggle" id="chatbotToggle">
+         <i class="fa-solid fa-comments"></i>
+      </button>
 
+      <!-- Chatbot Window -->
+       <div class="chatbot-window" id="chatbotWindow">
+         <div class="chatbot-header">
+            <div class="chatbot-header-content">
+               <div class="chatbot-title">
+                  <div class="chatbot-title-icon">
+                     <i class="fa-solid fa-robot"></i>
+                  </div>
+                  <div class="chatbot-title-info">
+                     <span class="name">Exilus AI</span>
+                     <span class="status">
+                        <span class="status-dot"></span>
+                        Online
+                     </span>
+                  </div>
+               </div>
+               <button class="chatbot-close" id="chatbotClose">
+                  <i class="fa-solid fa-xmark"></i>
+               </button>
+            </div>
+         </div>   
+         <div class="chatbot-messages" id="chatbotMessages">
+            <div class="welcome-message">
+               <div class="robot-icon">
+                  <img src="images/robot/robot.svg" alt="AI">
+               </div>
+               <h3>Hi there!</h3>
+               <p>My name is Exilus, I'm your AI assistant. Ask me anything about Zifan!</p>
+            </div>
+
+            <!-- Messages will appear here -->
+         </div>
+         <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type your message...">
+            <button class="chatbot-send" id="chatbotSend">
+               <i class="fa-solid fa-paper-plane"></i>
+            </button>
+         </div>
+       </div>
 
 
       <!-- Load particles.js -->
@@ -350,18 +455,18 @@
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
-            loop: true,
-            slidesPerView: "auto", // required for 3D effect
+            rewind: true,
+            slidesPerView: "auto",
             autoplay: {
                delay: 3000,
                disableOnInteraction: false,
             },
             coverflowEffect: {
-               rotate: 30,        // side card rotation
-               stretch: 0,        // spacing between slides
-               depth: 150,        // z-axis depth
-               modifier: 1.5,     // strength of effect
-               slideShadows: true // gives 3D shadows
+               rotate: 30,        
+               stretch: 0,        
+               depth: 150,        
+               modifier: 1.5,     
+               slideShadows: true 
             },
             navigation: {
                nextEl: ".swiper-button-next",
@@ -420,12 +525,14 @@
       <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
       <script>
       AOS.init({
-         duration: 1000,      // Animation duration in ms
-         once: true,          // Only animate once per element
-         offset: 100,         // Offset (px) before animation triggers
+         duration: 1000,      
+         once: true,        
+         offset: 100,        
       });
       </script>
 
+      <!-- Chatbot JS -->
+      <script src="js/chatbot.js"></script>
 
 </body>
 </html>
