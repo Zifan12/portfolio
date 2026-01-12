@@ -11,6 +11,7 @@ class ChatbotController {
         };
 
         this.isOpen = false;
+        this.apiUrl = 'http://localhost:8000/chat'; 
         this.init();
     }
 
@@ -50,7 +51,7 @@ class ChatbotController {
     }
 
 
-    sendMessage() {
+    async sendMessage() {
         const input = this.elements.input;
         const messageText = input?.value.trim();
 
@@ -61,14 +62,36 @@ class ChatbotController {
 
         // Clear input
         input.value = '';
-
+        
+        // Show typing indicator while waiting for response
         this.showTypingIndicator();
 
-    
-        setTimeout(() => {
+        try {
+            // Call the FastAPI backend
+            const response = await fetch(this.apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({message:messageText}),
+
+            });
+
             this.hideTypingIndicator();
-            this.addBotResponse(messageText);
-        }, 1000);
+
+            if (!response.ok) {
+                throw new Error(`Server error': $(response.status)`);
+            }
+
+            const data = await response.json();
+            this.addMessage(data.response, false);
+        } catch (error) {
+            this.hideTypingIndicator();
+            console.error('Chatbot error:', error);
+            this.addMessage("Sorry, I'm having trouble connecting right now. Please make sure the backend server is running.", false);
+
+        }
+    
 
     }
 
@@ -131,18 +154,6 @@ class ChatbotController {
     }
 
     
-    addBotResponse(userMessage) {
-        // Simple placeholder response - replace with actual AI integration later
-        const responses = [
-            "That's interesting! Tell me more.",
-            "I understand. How can I help you further?",
-            "Thanks for sharing that with me!",
-            "I'm here to help. What else would you like to know?"
-        ];
-        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-        this.addMessage(randomResponse, false);
-    }
-
     scrollToBottom() {
         if (this.elements.messages) {
             this.elements.messages.scrollTop = this.elements.messages.scrollHeight;

@@ -25,6 +25,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 client = OpenAI()
 retriever = RAGRetriever()
 
@@ -45,6 +46,7 @@ async def chat(request: ChatRequest):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages,
+        max_tokens=150,  
     )
 
     return {"response": response.choices[0].message.content}
