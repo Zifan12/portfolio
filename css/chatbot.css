@@ -343,6 +343,37 @@
   word-wrap: break-word;
 }
 
+/* Bot message list styling */
+.message.bot .message-content ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.message.bot .message-content li {
+  position: relative;
+  padding: 4px 0;
+  padding-left: 8px;
+}
+
+.message.bot .message-content li::before {
+  content: '•';
+  position: absolute;
+  left: -12px;
+  color: #00f0ff;
+  font-weight: bold;
+}
+
+.message.bot .message-content p {
+  margin: 0;
+  padding: 2px 0;
+}
+
+.message.bot .message-content p + ul,
+.message.bot .message-content ul + p {
+  margin-top: 8px;
+}
+
 .message.bot .message-avatar {
   width: 32px;
   height: 32px;

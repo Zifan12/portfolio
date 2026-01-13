@@ -143,7 +143,13 @@ class ChatbotController {
         // Create message content
         const contentDiv = document.createElement('div');
         contentDiv.className = 'message-content';
-        contentDiv.textContent = text;
+
+        if (isUser) {
+            contentDiv.textContent = text;
+        } else {
+            // Format bot response  - convert bullet points to proper HTML
+            contentDiv.innerHTML = this.formatBotResponse(text);
+        }
         
         messageDiv.appendChild(avatarDiv);
         messageDiv.appendChild(contentDiv);
@@ -151,6 +157,48 @@ class ChatbotController {
 
         this.scrollToBottom();
 
+    }
+
+    formatBotResponse(text) {
+        // Escape HTML to prevent XSS
+        const escapeHtml = (str) => {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        };
+
+        // Split by newlines or " - " patterns
+        const lines = text.split(/\n|(?= - )/);
+
+        let formattedLines = [];
+        let inList = false;
+
+        for (let line of lines) {
+            line = line.trim();
+
+            // Check if line is a bullet point (- or *)
+            if (line.match(/^[-*•]\s/)){
+                if (!inList) {
+                    formattedLines.push('<ul>');
+                    inList = true;
+                }
+                const content = escapeHtml(line.replace(/^[-*•]\s*/, ''))
+                formattedLines.push(`<li>${content}</li>`);
+                
+            } else { // Close bullet point when bullets stop
+                if (inList) {
+                    formattedLines.push(`</ul>`);
+                    inList = false;
+                }
+                formattedLines.push(`<p>${escapeHtml(line)}</p>`);
+            }
+        }
+        
+        if (inList) {
+            formattedLines.push(`</ul>`);
+        }
+
+        return formattedLines.join('');
     }
 
     
