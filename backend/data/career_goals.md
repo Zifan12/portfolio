@@ -23,6 +23,7 @@ In the long term, I aim to:
 - Build systems that integrate machine learning models, retrieval systems, data pipelines, and software infrastructure into reliable products
 - Take ownership of end-to-end AI systems, from data ingestion and model integration to deployment, evaluation, and product integration
 - Contribute to products that are used by real users and solve meaningful problems in the real world.
+- A long term personal end goal of mine is to make Exilus like Jarvis. A fully automated AI assistant for me. Someday I want to make this happen.
 
 I am especially interested in roles that sit at the intersection of AI, software engineering, and systems engineering.
 

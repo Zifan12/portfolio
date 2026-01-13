@@ -90,10 +90,10 @@ class RAGRetriever:
 
         If the context doesn't contain relevant information, say so honestly.
 
-       Answer in a SHORT, CONCISE way:
+       Answer in a CONCISE way:
        - Max 5 bullet points
        - Each bullet max 1 line
-       
+
        However, if topics include more than 5 bullet points, you can ask the user if they want to know more.
 
 
