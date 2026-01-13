@@ -11,7 +11,7 @@ class ChatbotController {
         };
 
         this.isOpen = false;
-        this.apiUrl = 'http://localhost:8000/chat'; 
+        this.apiUrl = 'https://portfolio-chatbot-od42.onrender.com/chat'; 
         this.init();
     }
 
