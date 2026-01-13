@@ -2,6 +2,8 @@
 
 A personal portfolio website featuring an AI-powered chatbot built with Retrieval-Augmented Generation (RAG). The chatbot uses semantic search over personal documents to answer questions about my background, skills, and projects.
 
+**Live Site:** [zifan-portfolio.vercel.app](https://zifan-portfolio.vercel.app)
+
 ![Portfolio Preview](images/projects/portfolio_website.png)
 
 ## Features
@@ -62,70 +64,6 @@ Portfolio Website/
         ├── technical_focus.md
         ├── hobbies.md
         └── heart_disease_predictor.md
-```
-
-## Getting Started
-
-### Frontend
-
-Simply open `index.html` in a browser, or serve with any static file server:
-
-```bash
-# Using Python
-python -m http.server 8080
-
-# Using Node.js
-npx serve
-```
-
-### Backend (RAG Chatbot)
-
-1. **Navigate to the backend folder:**
-   ```bash
-   cd backend
-   ```
-
-2. **Create and activate a virtual environment:**
-   ```bash
-   python -m venv venv
-   
-   # Windows
-   venv\Scripts\activate
-   
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Set up environment variables:**
-   ```bash
-   # Create a .env file with your OpenAI API key
-   echo OPENAI_API_KEY=your-api-key-here > .env
-   ```
-
-5. **Ingest documents into the vector database:**
-   ```bash
-   python ingest.py
-   ```
-
-6. **Start the server:**
-   ```bash
-   uvicorn main:app --reload
-   ```
-
-   The API will be available at `http://localhost:8000`
-
-### API Endpoint
-
-```
-POST /chat
-Content-Type: application/json
-
-{
-  "message": "What are Zifan's skills?"
-}
 ```
 
 ## Tech Stack
