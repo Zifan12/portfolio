@@ -2,6 +2,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/* -------------------- CSS Custom Properties for Responsive Design -------------------- */
+:root {
+  /* Spacing */
+  --section-padding-inline: clamp(1rem, 5vw, 150px);
+  --section-padding-block: clamp(60px, 8vh, 100px);
+  --container-max-width: min(1200px, 90vw);
+  
+  /* Typography Scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --text-3xl: clamp(1.8rem, 1.4rem + 2vw, 2.5rem);
+  --text-4xl: clamp(2rem, 1.5rem + 2.5vw, 2.8rem);
+  
+  /* Component Sizes */
+  --card-width: min(650px, 100%);
+  --image-size: min(500px, 80vw);
+  --nav-gap: clamp(15px, 2vw, 30px);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -78,10 +102,9 @@ body.home {
 }
 
 .nav-icon {
-  height: 8vw; /* Adjust size as needed */
-  width: 8vw;
-  margin-right: -2.0rem; 
-  
+  height: clamp(60px, 8vw, 120px);
+  width: clamp(60px, 8vw, 120px);
+  margin-right: -1rem; 
 }
 
 
@@ -98,7 +121,7 @@ body.home {
 
 .logo span {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 2vw + 0.8rem, 2.5rem);
   font-weight: 700;
   color: white;
   text-shadow: 0 0 20px #00ccff, 0 0 20px #0051ff;
@@ -142,27 +165,24 @@ nav {
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding-left: 10px;   /* Add left padding only */
-  padding-right: 200px; /* Keep right side as is for nav links */
+  padding-inline: clamp(10px, 3vw, 200px);
 }
 
 
 .nav-container .links {
   display: flex;
-  gap: 30px;
-
+  gap: var(--nav-gap);
 }
 
 /* Individual Link Styling */
 .nav-container .links a { 
   position: relative;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
   color: white;
   margin: 0 7px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s linear;
-
 }
 
 /* Link Hover Underline Effect */
@@ -197,11 +217,10 @@ section {
 }
 
 section .main-container {
- 
   display: flex;
   justify-content: flex-end;
-  padding-right: 320px;
-  gap: 100px;
+  padding-right: clamp(1rem, 15vw, 320px);
+  gap: clamp(30px, 8vw, 100px);
   padding-top: 60px;  
   align-items: center;
   min-height: 100vh;  
@@ -319,30 +338,25 @@ section .main-container {
 
 #about {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 100px 150px;
+  padding: var(--section-padding-block) var(--section-padding-inline);
   min-height: 100vh;
   color: white;
-  /*background: linear-gradient( #05030a, #0a0f2c);*/
 }
 
 .about .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 170px;
+  margin-left: clamp(0px, 10vw, 170px);
   position: relative;
-
-  
 }
 
 .title span {
-  font-size: 2.8rem;
+  font-size: var(--text-4xl);
   color: white;
   text-shadow: 0 0 40px #0051ff;
   font-weight: 500;
   position: relative;
-
-
 }
 
 .title span::before,
@@ -367,32 +381,35 @@ section .main-container {
 .about-details {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: clamp(30px, 5vw, 50px);
   margin-top: 0px;
-
+  flex-wrap: wrap;
 }
 
 .about-details .left {
-  width: 45%;
-
+  width: clamp(280px, 45%, 500px);
+  flex-shrink: 0;
 }
 
 .about-details .left img {
-  height: 500px;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 0 100px grey;
-
 }
 
 .about-details .right {
-  width: 55%;
+  width: clamp(280px, 55%, 600px);
+  flex: 1;
+  min-width: 280px;
 }
 
 .about-details .topic {
   color: white;
-  font-size: 32px;
+  font-size: var(--text-3xl);
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -400,8 +417,7 @@ section .main-container {
 .about-details .right p {
   text-align: justify;
   color: white;
-  font-size: 20px;
-
+  font-size: var(--text-lg);
 }
 
 .button {
@@ -433,11 +449,9 @@ section .main-container {
 
 
 #education {
-  padding: 0px 150px;
+  padding: var(--section-padding-block) var(--section-padding-inline);
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
-  /* background: linear-gradient(to bottom, #05030a, #0a0f2c);*/
-
 }
 
 .timeline-horizontal {
@@ -468,9 +482,9 @@ section .main-container {
 }
 
 .education-title {
-  margin-left: 100px; /* move it to the right */
+  margin-left: clamp(0px, 5vw, 100px);
   text-align: center; 
-  margin-bottom: 60px;
+  margin-bottom: clamp(30px, 5vh, 60px);
 }
 
 .timeline-icon {
@@ -589,7 +603,7 @@ section .main-container {
 /* -------------------- Skills Styling ------------------------------------------------------------------------------------------------------------------------------------------- */
 #skills {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 100px 150px;
+  padding: var(--section-padding-block) var(--section-padding-inline);
   min-height: 100vh;
 }
 
@@ -600,11 +614,11 @@ section .main-container {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(15px, 3vw, 30px);
   justify-items: center;
-  padding: 40px 20px;
-  max-width: 1200px;
+  padding: clamp(20px, 4vw, 40px) clamp(10px, 2vw, 20px);
+  max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
@@ -680,9 +694,8 @@ section .main-container {
 /* -------------------- Projects Styling -------------------- */
 #projects {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 0px 150px 100px 150px;
+  padding: 0 var(--section-padding-inline) var(--section-padding-block) var(--section-padding-inline);
   min-height: 100vh;
-  /* background: linear-gradient(to bottom, #05030a, #0a0f2c);*/
 }
 
 
@@ -692,14 +705,12 @@ section .main-container {
 }
 
 .projectSwiper {
-  width: 100%;
-  height: 800px;   
+  width: 100vw;
+  min-height: clamp(650px, 85vh, 950px);
+  height: auto;
   margin: auto;
-  padding: 40px 0;
-  width: 100vw;
-  width: 100vw;
-  margin-left: -150px;
-  padding: 80px 0;
+  margin-left: calc(-1 * var(--section-padding-inline));
+  padding: clamp(40px, 8vh, 80px) 0;
 }
 
 .project-card {
@@ -719,21 +730,21 @@ section .main-container {
 
 
 .swiper-slide {
-  width:  600px;
-  height: 530px;
+  width: min(600px, 85vw);
+  min-height: clamp(500px, 70vh, 650px);
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .project-card-top {
-  width: 600px;
-  height: 300px; 
-  margin-bottom: 150px;
+  width: min(600px, 85vw);
+  height: clamp(200px, 35vh, 300px); 
+  margin-bottom: clamp(80px, 15vh, 150px);
 }
 .project-card-bottom {
   width: 100%;
-  height: 100%;
+  min-height: fit-content;
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid white;
   border-radius: 12px;
@@ -747,11 +758,10 @@ section .main-container {
 
 
 .project-title {
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
 }
 .project-description {
-  font-size: 0.9rem;
-
+  font-size: var(--text-sm);
 }
 
 .project-tags span {
@@ -764,7 +774,7 @@ section .main-container {
 }
 
 /* Demo Video Link Button */
-.demo-link-btn {
+.demo-link-yt-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -781,16 +791,43 @@ section .main-container {
   box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
 }
 
-.demo-link-btn:hover {
+.demo-link-yt-btn:hover {
   background: #ff0000;
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
 }
 
+
+/* Demo Link Button */
+.demo-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.demo-link-btn:hover {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.5);
+}
+
 .demo-link-btn i {
   font-size: 1.2rem;
 }
+
 .project-card img {
   width: 100%;
   height: 100%;
@@ -832,8 +869,8 @@ section .main-container {
 .swiper-pagination {
   position: relative;
   text-align: center;
-  margin-top: -30px;
-  margin-bottom: 50px;
+  margin-top: clamp(50px, 2vw, 30px);
+  margin-bottom: clamp(30px, 5vw, 50px);
 }
 
 .swiper-pagination-bullet {
@@ -848,7 +885,7 @@ section .main-container {
 }
 
 .swiper-pagination-bullet-active {
-  background: #06a8f3; /* green active color */
+  background: #06a8f3; 
   opacity: 1;
 }
 
@@ -856,9 +893,8 @@ section .main-container {
 /* -------------------- Certificates Styling -------------------- */
 #certificates {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 80px 150px 0px 150px;
+  padding: var(--section-padding-block) var(--section-padding-inline) 0 var(--section-padding-inline);
   min-height: 100vh;
-  /* background: linear-gradient(to bottom, #05030a, #0a0f2c);*/
 }
 
 .certificates {
@@ -869,13 +905,12 @@ section .main-container {
 
 
 .cert-grid {
-  transform: translateX(-80px); /* adjust the value as needed */
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(30px, 5vw, 60px);
   justify-items: center;
   align-items: stretch;
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
@@ -887,41 +922,29 @@ section .main-container {
 
   
 .cert-card {
-  width: 650px;
-  padding: 20px;
-  margin: 0 auto;
-  border: 12px solid #0051ff;
-  background: rgba(10, 10, 30, 0.9);
-  box-shadow: 0 0 20px #0051ff, 0 0 40px #0051ff inset;
-  transition: transform 0.3s ease;
-
-}
-
-.cert-card {
-  position: relative;
-}
-
-.cert-card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px #0051ff, 0 0 60px #0051ff inset;
-}.cert-card {
-  width: 650px;
-  padding: 20px;
+  width: min(650px, 100%);
+  padding: clamp(15px, 3vw, 20px);
   margin: 0 auto;
   border: 2px solid #06a8f3;
   background: rgba(10, 10, 30, 0.9);
   box-shadow: 0 0 20px #06a8f3, 0 0 40px #06a8f3 inset;
   transition: transform 0.3s ease;
+  position: relative;
+}
+
+.cert-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #0051ff, 0 0 60px #0051ff inset;
 }
 
 
 .cert-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
   margin-top: 15px;
   color: #06a8f3;
   text-shadow: 0 0 20px #0051ff;
-  margin-bottom: 35px;
+  margin-bottom: clamp(20px, 4vw, 35px);
 }
 
 .view-button {
@@ -948,33 +971,32 @@ section .main-container {
 /* -------------------- Contact Styling -------------------- */
 #contact {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 100px 150px;
+  padding: var(--section-padding-block) var(--section-padding-inline);
   min-height: 70vh;
-   /* background: linear-gradient(to bottom, #05030a, #0a0f2c);*/
 }
 
 .section-title {
   font-family: 'Orbitron', sans-serif;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: var(--text-3xl);
   text-shadow: 0 0 10px #0051ff;
   margin-bottom: 20px;
 }
 
 .contact-intro {
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 1.1rem;
+  margin-bottom: clamp(25px, 4vw, 40px);
+  font-size: var(--text-base);
   color: #ccc;
 }
 
 .contact-form {
   position: relative;
-  max-width: 600px;
-  margin: 0 auto 40px;
+  max-width: min(600px, 100%);
+  margin: 0 auto clamp(25px, 4vw, 40px);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: clamp(10px, 2vw, 15px);
 }
 
 .contact-form input,
@@ -1335,10 +1357,6 @@ section .main-container {
     display: none; 
   }
 
- .swiper-pagination {
-    position: absolute;
-    bottom: 30px;
-}
 
   #certificates {
     padding: 0px 20px;
@@ -1380,6 +1398,8 @@ section .main-container {
     
 
   }
+
+
 
 }
 
@@ -1740,13 +1760,43 @@ section .main-container {
   .cert-card {
     width: 100%;
   }
-
-
-  
 }
 
-    
+/* --------------------------- Large Desktop styles (1600px+) ---------------------------*/
+@media (min-width: 1600px) {
+  :root {
+    --section-padding-inline: 200px;
+    --section-padding-block: 120px;
+  }
 
+  .skills-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1400px;
+  }
 
+  section .main-container {
+    padding-right: 400px;
+    gap: 120px;
+  }
 
+  .main-container .profile-image {
+    max-width: 450px;
+    max-height: 450px;
+  }
+}
+
+/* --------------------------- Ultra-wide Desktop styles (1920px+) ---------------------------*/
+@media (min-width: 1920px) {
+  :root {
+    --section-padding-inline: 250px;
+    --container-max-width: 1600px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

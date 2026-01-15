@@ -6,6 +6,7 @@
 - Java (used for Android application development in CMPUT 301)
 - C (used in CMPUT 201 for systems and low-level programming)
 - SQL (used in CMPUT 291 for database querying and data management)
+- JavaScript (used in CMPUT 404)
 
 ## Machine Learning and AI
 
@@ -25,7 +26,7 @@
 ## Backend and Systems
 
 - FastAPI (for building backend services and APIs for AI applications)
-- Still learning more...
+- Django
 
 ## Databases and Storage
 

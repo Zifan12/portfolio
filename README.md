@@ -7,7 +7,12 @@ A personal portfolio website featuring an AI-powered chatbot built with Retrieva
 ![Portfolio Preview](images/projects/portfolio_website.png)
 
 ## Features
+## Deployment
 
+| Component | Platform |
+|-----------|----------|
+| Frontend | [Vercel](https://vercel.com/) |
+| Backend | [Render](https://render.com/) |
 ### Portfolio
 - **Responsive Design** — Fully optimized for desktop, tablet, and mobile devices
 - **Interactive Sections** — Home, About, Education, Skills, Projects, Certificates, Contact
