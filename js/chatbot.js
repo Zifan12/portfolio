@@ -11,6 +11,7 @@ class ChatbotController {
         };
 
         this.isOpen = false;
+        this.isFirstOpen = true;
         this.apiUrl = 'https://portfolio-chatbot-od42.onrender.com/chat'; 
         this.init();
     }
@@ -41,6 +42,12 @@ class ChatbotController {
 
         const input = document.getElementById('chatbotInput');
         setTimeout(() => input?.focus(), 300); 
+
+        // Show welcome message on first open
+        if (this.isFirstOpen) {
+            this.isFirstOpen = false;
+            this.addMessage("Hello! My name is Exilus and I am Zifan's AI assistant. Feel free to ask me anything about him. Note: The first response might take a awhile as the server wakes up (free hosting tier).", false);
+        }
     }
 
     closeChat() {

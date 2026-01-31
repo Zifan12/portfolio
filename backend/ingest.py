@@ -24,6 +24,7 @@ COLLECTION_NAME = "portfolio_docs"
 CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
 
+
 def load_documents():
     """Load all documents from the data directory"""
     print(f"Loading documents from {DATA_DIRECTORY}")
