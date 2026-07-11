@@ -911,7 +911,7 @@ section .main-container {
 .tilt {
   position: relative;
   transform: perspective(900px) rotateX(var(--tx, 0deg)) rotateY(calc(var(--ty, 0deg) + var(--idle, 0deg))) translateY(var(--lift, 0px)) scale(var(--zoom, 1));
-  transition: transform 0.35s ease;
+  transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   will-change: transform;
 }
 
