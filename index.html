@@ -13,25 +13,33 @@
       <title>Zifan Portfolio</title>
    </head>
    <body class="home">
+      <!-- Animated background layers -->
+      <div class="bg-scene" aria-hidden="true">
+         <div class="bg-image"></div>
+         <div class="bg-aurora"></div>
+         <div class="bg-stars"><span></span><span></span><span></span></div>
+      </div>
+
       <!-- Particle container-->
       <div id="particles-js"></div>
       
       <!-- navigation menu-->
       <nav>
-         <div class="nav-container">
-            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
-               <img class="nav-icon" src="images/icons/icon2.png" alt="">
-               <span>Zifan Li</span>
-            </div>
+         <div class="nav-container" data-aos="fade-down" data-aos-duration="800">
+            <a href="#home" class="logo" aria-label="Zifan Li - home">
+               <span class="logo-ring"><span class="logo-inner">ZL</span></span>
+            </a>
+            <span class="nav-divider"></span>
             <div class="links">
-               <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="0"><a href="#home">Home</a></div>
-               <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100"><a href="#about">About</a></div>
-               <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200"><a href="#education">Education</a></div>
-               <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300"><a href="#skills">Skills</a></div>
-               <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400"><a href="#projects">Projects</a></div>
-               <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"><a href="#certificates">Certificates</a></div>
-               <div class="link" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600"><a href="#contact">Contact</a></div>
+               <a href="#home">Home</a>
+               <a href="#about">About</a>
+               <a href="#education">Education</a>
+               <a href="#skills">Skills</a>
+               <a href="#projects">Projects</a>
+               <a href="#certificates">Certificates</a>
             </div>
+            <span class="nav-divider"></span>
+            <a href="#contact" class="say-hi">Say hi <span aria-hidden="true">&#8599;</span></a>
             <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
          </div>
          <div class="dropdown" id="mobile-menu">
@@ -51,26 +59,34 @@
       <section class="home" id="home">
          <div class="main-container">
             <!-- <div class="profile-wrapper"> might not need this--> 
-               <div class="profile-image" data-aos="zoom-out" data-aos-duration="1500">
-                  <img src="images/profile/profile_image.png" alt="">
+               <div class="planet-scene" data-aos="zoom-out" data-aos-duration="800">
+                  <div class="orbit orbit-outer"></div>
+                  <div class="orbit orbit-inner"></div>
+                  <div class="profile-image">
+                     <video autoplay muted loop playsinline
+                            poster="images/profile/profile_image.png"
+                            aria-label="Glowing blue planet animation">
+                        <source src="videos/planet.mp4" type="video/mp4">
+                        <img src="images/profile/profile_image.png" alt="">
+                     </video>
+                  </div>
                </div>
             <!-- </div> -->
             <div class="content">
-               <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">
-                  Hi I'm <span>Zifan</span>
-               </h1>
-               <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">
+               <p class="hero-greeting" data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">Hi, I'm</p>
+               <h1 class="hero-name" data-aos="fade-left" data-aos-duration="800" data-aos-delay="250">Zifan Li</h1>
+               <div class="typewriter" data-aos="fade-right" data-aos-duration="800" data-aos-delay="350">
                   I'm a <span id="typewriter-text"></span>
                </div>
-               <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">Third-year Computer Science student specializing in AI engineering, building real-world machine learning and generative AI systems with a strong focus on practical, production-ready projects.</p>
+               <p data-aos="flip-down" data-aos-duration="800" data-aos-delay="500">Third-year Computer Science student specializing in AI engineering, building real-world machine learning and generative AI systems with a strong focus on practical, production-ready projects.</p>
                <div class="social-links">
-                  <a href="https://github.com/Zifan12" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"> 
+                  <a href="https://github.com/Zifan12" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="650">
                      <i class="fa-brands fa-github"></i></a>
-                  <a href="https://www.linkedin.com/in/li-zifan/" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400">
+                  <a href="https://www.linkedin.com/in/li-zifan/" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="725">
                      <i class="fa-brands fa-linkedin"></i></a>
-                  <a href="https://www.instagram.com/zifan.li_/" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500">
+                  <a href="https://www.instagram.com/zifan.li_/" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="800">
                      <i class="fa-brands fa-instagram"></i></a>
-                  <a href="mailto:zifan.li912@gmail.com" target="_blank" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1600">
+                  <a href="mailto:zifan.li912@gmail.com" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="875">
                      <i class="fa-solid fa-envelope"></i>
                   </a>
                </div>
@@ -81,19 +97,19 @@
       <!-- About Section Start -->
       <section class="about" id="about">
          <div class="content">
-            <div class="title about-title" data-aos="fade-up" data-aos-duration="1500"><span>Introduction</span></div>
+            <div class="title about-title" data-aos="fade-up" data-aos-duration="800"><span>Introduction</span></div>
             <div class="about-details">
-               <div class="left" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
+               <div class="left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
                   <img src="images/profile/intro.png" alt = ""/>
                </div>
                <div class="right">
-               <div class="topic"  data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200">My Mission</div>
-                  <p  data-aos="flip-down" data-aos-duration="1500" data-aos-delay="300">
+               <div class="topic"  data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">My Mission</div>
+                  <p  data-aos="flip-down" data-aos-duration="800" data-aos-delay="300">
                      I’m a third-year Computer Science student at the University of Alberta focused on AI engineering. 
                      I build hands-on machine learning and generative AI systems through exploratory and project-based work, with an emphasis on understanding how modern AI systems are designed, evaluated, and deployed.
-                     I’m actively seeking internships for Summer 2026 where I can continue developing as an engineer while contributing to real-world projects.
+                     I’m actively seeking <span class="accent-text">internships for Summer 2026</span> where I can continue developing as an engineer while contributing to real-world projects.
                   </p>
-                  <div class="button"  data-aos="zoom-in-left" data-aos-duration="1500" data-aos-delay="400">
+                  <div class="button"  data-aos="zoom-in-left" data-aos-duration="800" data-aos-delay="400">
                      <a href="images/others/Zifan_li_resume.pdf" target="_blank" class="download-btn">Download Resume</a>
                
                   </div>
@@ -105,12 +121,12 @@
       <!-- Education Section Start -->
       <section class="education" id="education">
       <div class="content">
-         <h2 class="title education-title" data-aos="fade-up" data-aos-duration="1500"><span>Academic Background</span></h2>
+         <h2 class="title education-title" data-aos="fade-up" data-aos-duration="800"><span>Academic Background</span></h2>
          <div class="timeline-horizontal">
             <div class="timeline-track">
             
             <!-- High School -->
-            <div class="timeline-item item-hta" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-delay="300">
+            <div class="timeline-item item-hta" data-aos="zoom-in-right" data-aos-duration="800" data-aos-delay="300">
                <div class="timeline-icon icon-hta">
                   <img src="images/education/HTA2.png" alt="Holy Trinity Academy">
                </div>
@@ -124,7 +140,7 @@
             </div>
 
             <!-- University -->
-            <div class="timeline-item item-uofa"  data-aos="zoom-in-right" data-aos-duration="1500" data-aos-delay="600">
+            <div class="timeline-item item-uofa"  data-aos="zoom-in-right" data-aos-duration="800" data-aos-delay="600">
                <div class="timeline-icon icon-uofa">
                   <img src="images/education/UofA.png" alt="University of Alberta">
                </div>
@@ -147,68 +163,69 @@
       <!-- Skills Section Start -->
       <section class="skills" id="skills">
          <div class="content">
-            <div class="title skills-title" data-aos="fade-up" data-aos-duration="1500">
+            <div class="title skills-title" data-aos="fade-up" data-aos-duration="800">
                <span>Skills</span>
             </div>
+            <p class="section-sub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">The tools I build with, from ML frameworks to backend services.</p>
             <div class="skills-grid">
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
-                  <img src="images/icons/Python.svg" alt="Python" class="skill-icon-img"></i>
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                  <img src="images/icons/Python.svg" alt="Python" class="skill-icon-img">
                   <span>Python</span>
                </div>
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">  
                   <img src="images/icons/scikit-learn.svg" alt="Scikit-learn" class="skill-icon-img">
                   <span>Scikit-learn</span>
                </div>
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/PyTorch.svg" alt="PyTorch" class="skill-icon-img">
                   <span>PyTorch</span>
                </div>
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/langchain-color.svg" alt="langchain/langgraph" class="skill-icon-img">
                   <span>LangChain</span>
                   <span>LangGraph</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/Matplotlib.svg" alt="Matplotlib" class="skill-icon-img">
                   <span>Matplotlib</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/SQLite.svg" alt="SQLite" class="skill-icon-img">
                   <span>SQLite</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/numpy-svgrepo-com.svg" alt="NumPy" class="skill-icon-img">
                   <span>NumPy</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/github-mark.svg" alt="github" class="skill-icon-img">
                   <span>GitHub</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/openai-svgrepo-com.svg" alt="OpenAI" class="skill-icon-img">
                   <span>OpenAI API</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/Chroma--Streamline-Svg-Logos.svg" alt="Chroma" class="skill-icon-img">
                   <span>ChromaDB</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/FastAPI.svg" alt="FastAPI" class="skill-icon-img">
                   <span>FastAPI</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/C.svg" alt="C" class="skill-icon-img">
                   <span>C</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/Java.svg" alt="Java" class="skill-icon-img">
                   <span>Java</span>
                </div>   
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/javascript-logo-svgrepo-com.svg" alt="JavaScript" class="skill-icon-img">
                   <span>JavaScript</span>
                </div>  
-               <div class="skill-card" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">  
+               <div class="skill-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">  
                   <img src="images/icons/django-svgrepo-com.svg" alt="Django" class="skill-icon-img">
                   <span>Django</span>
                </div>  
@@ -222,7 +239,6 @@
       <section class="projects" id="projects">
          <div class="content">
             <div class="title projects-title" data-aos="fade-up" data-aos-duration="1200"><span>Projects</span></div>
-            <!-- <p class="section-subtitle"><span>Things I've Built</span></p> -->
 
             <!-- Swiper Container -->
             <div class="swiper projectSwiper">
@@ -254,7 +270,6 @@
                            target="_blank" 
                            class="demo-link-btn">
                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-                           Demo Link
                         </a>
                         </div>
 
@@ -366,7 +381,7 @@
                </div>
                
                <!-- Certificate 3 
-               <div class="cert-wrapper" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">
+               <div class="cert-wrapper" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
                   <h3 class="cert-title">Third Specialization</h3>
                   <div class="cert-card">
                      <canvas class="pdf-canvas" data-url="documents/cert1.pdf"></canvas>
@@ -385,24 +400,36 @@
       <!-- Contact Section Start -->
       <section id="contact" class="contact-section">
       <div class="contact-container">
-         <h2 class="section-title" data-aos="fade-up" data-aos-duration="1500">Get in Touch </h2>
+         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Get in Touch </h2>
          <p class="contact-intro" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">Let’s connect! Whether it's collaboration, questions, or just a quick hello.</p>
 
-         <form action="https://formspree.io/f/mldlgqrd" method="POST" class="contact-form"  data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="500" >
+         <form action="https://formspree.io/f/mldlgqrd" method="POST" class="contact-form"  data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500" >
             <input type="text" name="name" placeholder="Your Name" required />
             <input type="email" name="email" placeholder="Your Email" required />
             <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
          </form>
 
-         <div class="contact-info" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="700" >
+         <div class="contact-info" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700" >
             <p>Email: <a href="mailto:zifan.li912@gmail.com">zifan.li912@gmail.com</a></p>
             <p>GitHub: <a href="https://github.com/Zifan12" target="_blank">Zifan12</a></p>
             <p>LinkedIn: <a href="https://www.linkedin.com/in/li-zifan/" target="_blank">Zifan Li Edmonton, AB</a></p>
          </div>
       </div>
       </section>
-      
+
+      <!-- Footer -->
+      <footer class="site-footer">
+         <span class="footer-copy">&copy; 2026 Zifan Li</span>
+         <div class="footer-socials">
+            <a href="https://github.com/Zifan12" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/li-zifan/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/zifan.li_/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:zifan.li912@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+         </div>
+         <span class="availability"><span class="pulse-dot"></span>Open to Summer 2026 internships</span>
+      </footer>
+
       <!-- Chatbot toggle (bottom right) -->
       <button class="chatbot-toggle" id="chatbotToggle">
          <i class="fa-solid fa-comments"></i>
@@ -461,7 +488,7 @@
       <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
       <script>
          const typed = new Typed('#typewriter-text', {
-            strings: ['Student', 'AI &amp; Machine Learning Enthusiast', 'Aspiring AI Engineer'],
+            strings: ['CS Student', 'AI & ML Enthusiast', 'Aspiring AI Engineer'],
             typeSpeed: 70,
             backSpeed: 40,
             backDelay: 1500,
@@ -532,6 +559,35 @@
             });
          });
       </script>
+      <!-- Hero planet cursor parallax -->
+      <script>
+         (() => {
+            if (!matchMedia('(pointer: fine)').matches) return;
+            const scene = document.querySelector('.planet-scene');
+            const hero = document.querySelector('section.home');
+            if (!scene || !hero) return;
+            hero.addEventListener('pointermove', e => {
+               const x = e.clientX / innerWidth - 0.5;
+               const y = e.clientY / innerHeight - 0.5;
+               scene.style.transform = `translate(${x * 16}px, ${y * 12}px)`;
+            });
+            hero.addEventListener('pointerleave', () => {
+               scene.style.transform = '';
+            });
+         })();
+      </script>
+
+      <!-- Skill card cursor spotlight -->
+      <script>
+         document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('pointermove', e => {
+               const r = card.getBoundingClientRect();
+               card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+               card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+            });
+         });
+      </script>
+
       <script>
       function hamburg() {
          document.getElementById("mobile-menu").classList.add("active");
@@ -546,9 +602,10 @@
       <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
       <script>
       AOS.init({
-         duration: 1000,      
-         once: true,        
-         offset: 100,        
+         duration: 700,
+         once: true,
+         offset: 80,
+         easing: 'ease-out-cubic',
       });
       </script>
 
