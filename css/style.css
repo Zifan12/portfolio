@@ -892,7 +892,30 @@ section .main-container {
   color: var(--accent);
 }
 
+/* -------------------- Shared 3D Tilt System --------------------
+   JS sets --tx/--ty (tilt) and --gx/--gy (glare).
+   Consumers may set --idle (resting Y angle), --lift, --zoom. */
+.tilt {
+  position: relative;
+  transform: perspective(900px) rotateX(var(--tx, 0deg)) rotateY(calc(var(--ty, 0deg) + var(--idle, 0deg))) translateY(var(--lift, 0px)) scale(var(--zoom, 1));
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
 
+.tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(240px circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.12), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tilt:hover::after {
+  opacity: 1;
+}
 
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -1140,7 +1163,7 @@ section .main-container {
 }
 
 .cert-card:hover {
-  transform: scale(1.05);
+  --zoom: 1.05;
   box-shadow: 0 0 30px #0051ff, 0 0 60px #0051ff inset;
 }
 

@@ -362,7 +362,7 @@
                <!-- Certificate 1 -->
                <div class="cert-wrapper" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
                   <h3 class="cert-title">Machine Learning Specialization</h3>
-                  <div class="cert-card">
+                  <div class="cert-card tilt">
                      <canvas class="pdf-canvas" data-url="documents/cert1.pdf"></canvas>
                   </div>
                   
@@ -373,7 +373,7 @@
                <!-- Certificate 2 -->
                <div class="cert-wrapper" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">
                   <h3 class="cert-title">Data Camp - AI Engineer</h3>
-                  <div class="cert-card">
+                  <div class="cert-card tilt">
                      <canvas class="pdf-canvas" data-url="documents/cert2.pdf"></canvas>
                   </div>
                   <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/d265be97edc6009c94f6f6d289fb3c37544837ff?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink"
@@ -573,6 +573,28 @@
             });
             hero.addEventListener('pointerleave', () => {
                scene.style.transform = '';
+            });
+         })();
+      </script>
+
+      <!-- Shared 3D tilt handler -->
+      <script>
+         (() => {
+            if (!matchMedia('(pointer: fine)').matches) return;
+            document.querySelectorAll('.tilt').forEach(el => {
+               el.addEventListener('pointermove', e => {
+                  const r = el.getBoundingClientRect();
+                  const px = (e.clientX - r.left) / r.width - 0.5;
+                  const py = (e.clientY - r.top) / r.height - 0.5;
+                  el.style.setProperty('--ty', (px * 10).toFixed(2) + 'deg');
+                  el.style.setProperty('--tx', (-py * 8).toFixed(2) + 'deg');
+                  el.style.setProperty('--gx', ((px + 0.5) * 100).toFixed(1) + '%');
+                  el.style.setProperty('--gy', ((py + 0.5) * 100).toFixed(1) + '%');
+               });
+               el.addEventListener('pointerleave', () => {
+                  el.style.setProperty('--tx', '0deg');
+                  el.style.setProperty('--ty', '0deg');
+               });
             });
          })();
       </script>
