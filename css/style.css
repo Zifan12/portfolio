@@ -588,6 +588,37 @@ section .main-container {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55), 0 0 40px var(--accent-glow-soft);
 }
 
+/* Floating 3D panel around the intro photo */
+.intro-panel {
+  border-radius: var(--radius);
+  animation: panel-float 6s ease-in-out infinite;
+}
+
+.intro-panel::before {
+  content: "";
+  position: absolute;
+  inset: 12% -6% -6% 12%;
+  border-radius: var(--radius);
+  background: radial-gradient(60% 60% at 70% 70%, var(--accent-glow-soft), transparent 75%);
+  filter: blur(24px);
+  z-index: -1;
+}
+
+.intro-panel img {
+  display: block;
+}
+
+@keyframes panel-float {
+  0%, 100% { --lift: 0px; }
+  50% { --lift: -10px; }
+}
+
+@property --lift {
+  syntax: '<length>';
+  initial-value: 0px;
+  inherits: false;
+}
+
 .about-details .right {
   width: clamp(280px, 55%, 600px);
   flex: 1;
