@@ -324,6 +324,8 @@ section .main-container {
   position: relative;
   flex-shrink: 0;
   transition: transform 0.3s ease-out;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .orbit {
@@ -335,12 +337,12 @@ section .main-container {
 
 .orbit-outer {
   inset: -70px;
-  animation: orbit-spin 46s linear infinite;
+  animation: orbit-spin-3d 46s linear infinite;
 }
 
 .orbit-inner {
   inset: -34px;
-  animation: orbit-spin 28s linear infinite reverse;
+  animation: orbit-spin-3d 28s linear infinite reverse;
 }
 
 /* Moon riding the outer ring */
@@ -356,8 +358,9 @@ section .main-container {
   box-shadow: 0 0 12px var(--accent-glow);
 }
 
-@keyframes orbit-spin {
-  to { transform: rotate(360deg); }
+@keyframes orbit-spin-3d {
+  from { transform: rotateX(68deg) rotateZ(0deg); }
+  to { transform: rotateX(68deg) rotateZ(360deg); }
 }
 
 .main-container .profile-image {
