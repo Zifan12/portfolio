@@ -799,9 +799,28 @@ section .main-container {
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: clamp(15px, 3vw, 30px);
   justify-items: center;
-  padding: clamp(20px, 4vw, 40px) clamp(10px, 2vw, 20px);
+  padding: clamp(12px, 2vw, 20px) clamp(10px, 2vw, 20px);
   max-width: var(--container-max-width);
   margin: 0 auto;
+}
+
+.skill-cluster {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.skill-cluster + .skill-cluster {
+  margin-top: clamp(28px, 4vh, 44px);
+}
+
+.cluster-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  max-width: var(--container-max-width);
+  padding: 0 clamp(10px, 2vw, 20px);
 }
 
 .skill-card {
@@ -861,7 +880,7 @@ section .main-container {
 }
 
 .skill-card:hover {
-  transform: translateY(-8px);
+  --lift: -8px;
   border-color: var(--accent);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px var(--accent-glow-soft);
   background: rgba(255, 255, 255, 0.08);
