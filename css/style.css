@@ -677,150 +677,110 @@ section .main-container {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.timeline-horizontal {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px 0;
-  overflow-x: auto;
-}
-
-.timeline-track {
-  display: flex;
-  align-items: flex-start;
-  position: relative;
-  border-top: 6.5px solid white;
-  margin: 200px auto 0;
-
-  flex-direction: row; /* horizontal layout */
-  gap: 100px; /* space between items */
-  width: 100%;
-  max-width: 1200px;
-  
-}
-.timeline-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .education-title {
   margin-left: clamp(0px, 5vw, 100px);
-  text-align: center; 
+  text-align: center;
   margin-bottom: clamp(30px, 5vh, 60px);
 }
 
-.timeline-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 100%;
-  background-color: white;
+/* Perspective vertical timeline */
+.timeline-v {
+  position: relative;
+  max-width: 900px;
+  margin: clamp(30px, 5vh, 50px) auto 0;
+  padding: 10px 0;
+}
+
+.timeline-v::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, var(--accent), var(--accent-deep), transparent);
+}
+
+.timeline-entry {
+  position: relative;
+  width: 50%;
+  padding: 20px 48px 20px 0;
+}
+
+.timeline-entry.entry-right {
+  margin-left: 50%;
+  padding: 20px 0 20px 48px;
+}
+
+.timeline-node {
+  position: absolute;
+  top: 28px;
+  right: -28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: white;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  
+  box-shadow: 0 0 18px var(--accent-glow-soft);
+  z-index: 2;
 }
 
-.timeline-icon.icon-uofa img {
-  width: 60%;
-  height: 60%;
+.timeline-entry.entry-right .timeline-node {
+  right: auto;
+  left: -28px;
 }
 
-.timeline-icon.icon-uofa {
-  left: 10%; /* Nudge left */
-  transform: translateX(-50%);
-}
-.timeline-item.item-uofa {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-
+.timeline-node img {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
 }
 
-
-.timeline-content.content-uofa {
-  padding: 20px;
-  border-radius: var(--radius);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-  margin-left: -200px;
-  margin-top: 55px;
-  
-
-   
-}
-
-
-.timeline-content ul {
-  padding-left: 30px; 
-}
-
-.timeline-content p {
-  opacity: 0.4;
-  color: #dddddd
-}
-
-.timeline-date.date-uofa {
-  position: absolute;
-  top: -70px;
-  left: 10%;;
-  transform: translateX(-50%);
-  opacity: 0.8;
-  
-} 
-
-.timeline-icon.icon-hta img {
-  width: 60%;
-  height: 60%;
-
-}
-.timeline-item.item-hta {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  position: relative;
-  
-}
-
-.timeline-content.content-hta {
-  padding: 20px;
-  border-radius: var(--radius);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-  margin-top: -180px;
-
-}
-
-.timeline-date.date-hta {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.8;
-}
-
-.education-background .timeline-content.content-hta,
-.education-background .timeline-content.content-uofa {
-  background: url('../images/backgrounds/background1.jpeg') no-repeat center center fixed;
-  background-size: cover;
-  border-radius: var(--radius);
-  padding: 20px;
-  position: relative;
-
-  /* This is what makes it "hover" visually */
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow-soft);
+.timeline-card {
+  --idle: 6deg;
+  background: var(--surface);
   border: 1px solid var(--line);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  text-align: left;
 }
 
-.education-background .timeline-content.content-hta:hover,
-.education-background .timeline-content.content-uofa:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 153, 255, 0.6);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+.timeline-entry.entry-right .timeline-card {
+  --idle: -6deg;
+}
+
+.timeline-card:hover {
+  --idle: 0deg;
+  --lift: -6px;
+}
+
+.timeline-years {
+  display: inline-block;
+  color: var(--accent);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.timeline-card h3 {
+  font-size: var(--text-lg);
+  margin-bottom: 4px;
+}
+
+.timeline-card p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--text-sm);
+}
+
+.timeline-card ul {
+  padding-left: 20px;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: var(--text-sm);
 }
 
 /* -------------------- Skills Styling ------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -1514,73 +1474,28 @@ section .main-container {
   }
 
 
-  .timeline-track {
-    flex-direction: column;
-    border-top: none;
-    border-left: 6px solid white;
-    height: 400px;
-    margin: 30px;
-    
-
+  .timeline-v::before {
+    left: 24px;
   }
 
-  .timeline-item {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-
+  .timeline-entry,
+  .timeline-entry.entry-right {
+    width: 100%;
+    margin-left: 0;
+    padding: 16px 0 16px 64px;
   }
 
-  .timeline-icon {
-    width: 60px;
-    height: 60px;
-    left: -5px;
-    top: 40px;
-
+  .timeline-node,
+  .timeline-entry.entry-right .timeline-node {
+    right: auto;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    top: 20px;
   }
 
-  .timeline-content.content-hta {
-    margin-top: 0px;
-    margin-left: 30px;
-    font-size: 1rem;
-    
-
-  }
-
-  .timeline-date.date-hta {
-    position: relative;
-    left: -7.5rem;   
-    top: 5px;
-    opacity: 0.7;
-
-  }
-
-  .timeline-icon.icon-uofa {
-    left: -1%;
-    transform: translateX(-50%);
-    top: 5%;
-  }
-
-  .timeline-content.content-uofa {
-    margin-left: 70px;
-    right: 10%;
-    font-size: 0.8rem;
-    bottom: 40%;
-   
-  }
-
-  .timeline-date.date-uofa {
-    position: relative;
-    opacity: 0.7;
-    left: -7.5rem;
-    top: -7rem;
-  
-
-  }
-
-  .timeline-content.content-uofa li {
-    list-style-position: inside;
-    padding-right: 30px;
+  .timeline-card {
+    --idle: 0deg;
   }
 
     #projects {
@@ -1792,76 +1707,6 @@ section .main-container {
     margin-bottom: 20px;
   }
 
-
-  .timeline-track {
-    flex-direction: column;
-    border-top: none;
-    border-left: 8px solid white;
-    height: 500px;
-    margin: 60px;
-    
-
-  }
-
-  .timeline-item {
-    position: relative;
-    display: flex;
-  
-    flex-direction: row;
-
-  }
-
-  .timeline-icon {
-    width: 60px;
-    height: 60px;
-    left: -5px;
-    top: 40px;
-
-  }
-
-  .timeline-content.content-hta {
-    margin-top: 0px;
-    margin-left: 60px;
-    font-size: 1.5rem;
-    
-
-  }
-
-  .timeline-date.date-hta {
-    position: relative;
-    left: -35%;   
-    top: 5px;
-    opacity: 0.7;
-
-  }
-
-  .timeline-icon.icon-uofa {
-    left: -1%;
-    transform: translateX(-50%);
-    top: 5%;
-  }
-
-  .timeline-content.content-uofa {
-    margin-left: 120px;
-    right: 10%;
-    font-size: 1rem;
-    bottom: 40%;
-   
-  }
-
-  .timeline-date.date-uofa {
-    position: relative;
-    opacity: 0.7;
-    left: -41%;
-    top: -6rem;
-  
-
-  }
-
-  .timeline-content.content-uofa li {
-    list-style-position: inside;
-    padding-right: 30px;
-  }
 
   #projects {
     padding: 100px 20px;
