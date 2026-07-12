@@ -59,7 +59,7 @@
       <section class="home" id="home">
          <div class="main-container">
             <!-- <div class="profile-wrapper"> might not need this--> 
-               <div class="planet-scene" data-aos="zoom-out" data-aos-duration="800">
+               <div class="planet-scene">
                   <div class="orbit orbit-outer"></div>
                   <div class="orbit orbit-inner"></div>
                   <div class="profile-image">
@@ -79,18 +79,18 @@
                   I'm a <span id="typewriter-text"></span>
                </div>
                <p data-aos="flip-down" data-aos-duration="800" data-aos-delay="500">Third-year Computer Science student specializing in AI engineering, building real-world machine learning and generative AI systems with a strong focus on practical, production-ready projects.</p>
-               <div class="social-links">
-                  <a href="https://github.com/Zifan12" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="650">
-                     <i class="fa-brands fa-github"></i></a>
-                  <a href="https://www.linkedin.com/in/li-zifan/" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="725">
-                     <i class="fa-brands fa-linkedin"></i></a>
-                  <a href="https://www.instagram.com/zifan.li_/" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="800">
-                     <i class="fa-brands fa-instagram"></i></a>
-                  <a href="mailto:zifan.li912@gmail.com" target="_blank" data-aos="fade-up" data-aos-duration="800" data-aos-delay="875">
-                     <i class="fa-solid fa-envelope"></i>
-                  </a>
-               </div>
             </div>
+         </div>
+         <div class="social-links" data-aos="fade-right" data-aos-duration="800" data-aos-delay="650">
+            <a href="https://github.com/Zifan12" target="_blank" aria-label="GitHub">
+               <i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/li-zifan/" target="_blank" aria-label="LinkedIn">
+               <i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/zifan.li_/" target="_blank" aria-label="Instagram">
+               <i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:zifan.li912@gmail.com" aria-label="Email">
+               <i class="fa-solid fa-envelope"></i>
+            </a>
          </div>
       </section>
 
@@ -544,10 +544,12 @@
             hero.addEventListener('pointermove', e => {
                const x = e.clientX / innerWidth - 0.5;
                const y = e.clientY / innerHeight - 0.5;
-               scene.style.transform = `translate(${x * 16}px, ${y * 12}px)`;
+               scene.style.setProperty('--par-x', (x * 24).toFixed(1) + 'px');
+               scene.style.setProperty('--par-y', (y * 16).toFixed(1) + 'px');
             });
             hero.addEventListener('pointerleave', () => {
-               scene.style.transform = '';
+               scene.style.setProperty('--par-x', '0px');
+               scene.style.setProperty('--par-y', '0px');
             });
          })();
       </script>

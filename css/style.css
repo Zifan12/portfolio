@@ -289,14 +289,35 @@ section {
   width: 100%;
 }
 
+/* Hero: full-viewport planet-horizon scene */
+section.home {
+  position: relative;
+  overflow: hidden;
+  height: 100dvh;
+}
+
+/* Fade the horizon into the next section */
+section.home::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.75));
+  pointer-events: none;
+  z-index: 3;
+}
+
 section .main-container {
   display: flex;
-  justify-content: center;
-  padding-inline: clamp(1rem, 8vw, 160px);
-  gap: clamp(30px, 8vw, 100px);
-  padding-top: 60px;
+  flex-direction: column;
   align-items: center;
-  min-height: 100dvh;
+  justify-content: flex-start;
+  text-align: center;
+  padding-inline: clamp(1rem, 6vw, 120px);
+  padding-top: clamp(110px, 18vh, 190px);
+  height: 100%;
 }
 
 @keyframes animate {
@@ -314,18 +335,28 @@ section .main-container {
 
 .main-container .content {
   color: white;
-  width: min(560px, 46%);
+  width: min(760px, 100%);
   position: relative;
   z-index: 2;
 }
 
-/* Planet scene: video planet + orbit rings + cursor parallax */
+.main-container .content > p {
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+/* Planet scene: rising world anchored to the bottom edge, cursor parallax via --par-x/--par-y */
 .planet-scene {
-  position: relative;
-  flex-shrink: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(120vw, 1100px);
+  height: min(120vw, 1100px);
+  transform: translate(calc(-50% + var(--par-x, 0px)), calc(58% + var(--par-y, 0px)));
   transition: transform 0.3s ease-out;
   perspective: 1000px;
   transform-style: preserve-3d;
+  z-index: 1;
 }
 
 .orbit {
@@ -336,12 +367,12 @@ section .main-container {
 }
 
 .orbit-outer {
-  inset: -70px;
+  inset: -110px;
   animation: orbit-spin-3d 46s linear infinite;
 }
 
 .orbit-inner {
-  inset: -34px;
+  inset: -54px;
   animation: orbit-spin-3d 28s linear infinite reverse;
 }
 
@@ -364,10 +395,8 @@ section .main-container {
 }
 
 .main-container .profile-image {
-  width: 35vw;
-  height: 35vw;
-  max-width: 400px;
-  max-height: 400px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   overflow: hidden;
   padding: 4px;
@@ -380,8 +409,15 @@ section .main-container {
       transparent 200deg,
       var(--accent-deep) 280deg,
       transparent 360deg);
-  animation: ring-spin 6s linear infinite;
-  box-shadow: 0 0 60px var(--accent-glow-soft);
+  animation: ring-spin 6s linear infinite, planet-drift 9s ease-in-out infinite;
+  box-shadow:
+    0 0 120px 30px var(--accent-glow-soft),
+    0 0 300px 80px rgba(6, 168, 243, 0.14);
+}
+
+@keyframes planet-drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 @property --ring-angle {
@@ -418,7 +454,7 @@ section .main-container {
 
 .hero-name {
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(2.4rem, 4vw + 1rem, 4.5rem);
+  font-size: clamp(2.6rem, 5vw + 1rem, 5.5rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: 2px;
@@ -454,29 +490,51 @@ section .main-container {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   background-color: rgba(6, 168, 243, 0.08);
-  border: 2px solid var(--accent);
+  border: 1px solid var(--accent);
   border-radius: 50%;
   color: var(--accent);
-  margin: 5px 8px;
-  font-size: 1.4rem;
+  font-size: 1.05rem;
   transition: 0.2s ease;
 }
 
 
+/* Socials: vertical instrument rail on the hero's left edge.
+   Centered with auto margins, not transform (AOS overrides element transforms). */
 .social-links {
-  margin-top: 10px;
-  position: relative;
+  position: absolute;
+  left: clamp(14px, 2.5vw, 40px);
+  top: 0;
+  bottom: 0;
+  margin-block: auto;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 4;
+}
+
+.social-links::before,
+.social-links::after {
+  content: "";
+  width: 1px;
+  height: clamp(30px, 6vh, 60px);
+  background: linear-gradient(180deg, transparent, var(--accent-glow));
+}
+
+.social-links::after {
+  background: linear-gradient(0deg, transparent, var(--accent-glow));
 }
 
 
 .social-links i:hover {
-  transform: scale(1.3);
-  color: black;
-  background-color: var(--accent-deep);
-  filter: drop-shadow(0 0 10px var(--accent-deep));
+  transform: scale(1.15);
+  color: white;
+  background-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
 }
 
 
@@ -1420,12 +1478,7 @@ section .main-container {
   }
 
   section .main-container {
-    flex-direction: column;
-    padding: 60px 1rem 0 1rem;
-    padding-right: 0; /* remove large desktop padding */
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
+    padding: 100px 1rem 0 1rem;
   }
 
   .main-container .content {
@@ -1433,12 +1486,27 @@ section .main-container {
     text-align: center;
   }
 
-  .main-container .profile-image {
-    width: 65vw;
-    height: 65vw;
-    max-width: 300px;
-    max-height: 300px;
-    margin: 0 auto;
+  .planet-scene {
+    width: min(150vw, 560px);
+    height: min(150vw, 560px);
+  }
+
+  /* Rail becomes a centered row above the horizon */
+  .social-links {
+    flex-direction: row;
+    top: auto;
+    bottom: 56px;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: max-content;
+    height: auto;
+    gap: 14px;
+  }
+
+  .social-links::before,
+  .social-links::after {
+    display: none;
   }
 
   .orbit-outer {
@@ -1664,12 +1732,7 @@ section .main-container {
     padding: 6px 8px;
   }
   section .main-container {
-    flex-direction: column;
-    padding: 60px 1rem 0 1rem;
-    padding-right: 0;
-    gap: 30px;
-    align-items: center;
-    justify-content: center;
+    padding: 120px 1rem 0 1rem;
   }
 
   .main-container .content {
@@ -1677,12 +1740,9 @@ section .main-container {
     text-align: center;
   }
 
-  .main-container .profile-image {
-    width: 80vw;
-    height: 80vw;
-    max-width: 500px;
-    max-height: 500px;
-    margin: 0 auto;
+  .planet-scene {
+    width: min(130vw, 800px);
+    height: min(130vw, 800px);
   }
 
   #about {
@@ -1827,21 +1887,14 @@ section .main-container {
     font-size: 0.8rem;
     padding: 6px 8px;
   }
-  .main-container .profile-image {
-    margin-left: 50px; 
-  }
-
   section .main-container {
-    padding: 80px 40px;
+    padding: 100px 40px 0;
     align-items: center;
- 
-    gap: 30px;
     text-align: center;
   }
 
-    
   .main-container .content {
-    width: 50%;
+    width: min(680px, 100%);
   }
 
 
@@ -1917,14 +1970,9 @@ section .main-container {
     max-width: 1400px;
   }
 
-  section .main-container {
-    padding-right: 400px;
-    gap: 120px;
-  }
-
-  .main-container .profile-image {
-    max-width: 450px;
-    max-height: 450px;
+  .planet-scene {
+    width: min(120vw, 1300px);
+    height: min(120vw, 1300px);
   }
 }
 
