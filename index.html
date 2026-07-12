@@ -58,27 +58,24 @@
       <!-- Home Section Start -->
       <section class="home" id="home">
          <div class="main-container">
-            <!-- <div class="profile-wrapper"> might not need this--> 
-               <div class="planet-scene">
-                  <div class="orbit orbit-outer"></div>
-                  <div class="orbit orbit-inner"></div>
-                  <div class="profile-image">
-                     <video autoplay muted loop playsinline
-                            poster="images/profile/profile_image.png"
-                            aria-label="Glowing blue planet animation">
-                        <source src="videos/planet.mp4" type="video/mp4">
-                        <img src="images/profile/profile_image.png" alt="">
-                     </video>
-                  </div>
-               </div>
-            <!-- </div> -->
             <div class="content">
-               <p class="hero-greeting" data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">Hi, I'm</p>
-               <h1 class="hero-name" data-aos="fade-left" data-aos-duration="800" data-aos-delay="250">Zifan Li</h1>
-               <div class="typewriter" data-aos="fade-right" data-aos-duration="800" data-aos-delay="350">
+               <h1 class="hero-name" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">Zifan Li</h1>
+               <div class="typewriter" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
                   I'm a <span id="typewriter-text"></span>
                </div>
-               <p data-aos="flip-down" data-aos-duration="800" data-aos-delay="500">Third-year Computer Science student specializing in AI engineering, building real-world machine learning and generative AI systems with a strong focus on practical, production-ready projects.</p>
+               <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="450">Third-year Computer Science student specializing in AI engineering, building real-world machine learning and generative AI systems with a strong focus on practical, production-ready projects.</p>
+               <div class="hero-ask" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
+                  <form class="ask-bar" id="heroAsk">
+                     <i class="fa-solid fa-robot" aria-hidden="true"></i>
+                     <input type="text" id="heroAskInput" placeholder="Ask my AI assistant anything about me..." aria-label="Ask Zifan's AI assistant a question" autocomplete="off">
+                     <button type="submit" aria-label="Send question"><i class="fa-solid fa-paper-plane"></i></button>
+                  </form>
+                  <div class="ask-chips">
+                     <button type="button" class="ask-chip" data-q="What projects has Zifan built?">What has he built?</button>
+                     <button type="button" class="ask-chip" data-q="What is Zifan's tech stack?">His tech stack?</button>
+                     <button type="button" class="ask-chip" data-q="Why should we hire Zifan as an intern?">Why hire him?</button>
+                  </div>
+               </div>
             </div>
          </div>
          <div class="social-links" data-aos="fade-right" data-aos-duration="800" data-aos-delay="650">
@@ -534,22 +531,28 @@
             });
          });
       </script>
-      <!-- Hero planet cursor parallax -->
+      <!-- Hero ask-bar: drives the Exilus chatbot -->
       <script>
          (() => {
-            if (!matchMedia('(pointer: fine)').matches) return;
-            const scene = document.querySelector('.planet-scene');
-            const hero = document.querySelector('section.home');
-            if (!scene || !hero) return;
-            hero.addEventListener('pointermove', e => {
-               const x = e.clientX / innerWidth - 0.5;
-               const y = e.clientY / innerHeight - 0.5;
-               scene.style.setProperty('--par-x', (x * 24).toFixed(1) + 'px');
-               scene.style.setProperty('--par-y', (y * 16).toFixed(1) + 'px');
+            const form = document.getElementById('heroAsk');
+            const input = document.getElementById('heroAskInput');
+            if (!form) return;
+            const ask = q => {
+               const bot = window.zifanChatbot;
+               if (!bot) return;
+               bot.openChat();
+               if (q) {
+                  bot.elements.input.value = q;
+                  bot.sendMessage();
+               }
+            };
+            form.addEventListener('submit', e => {
+               e.preventDefault();
+               ask(input.value.trim());
+               input.value = '';
             });
-            hero.addEventListener('pointerleave', () => {
-               scene.style.setProperty('--par-x', '0px');
-               scene.style.setProperty('--par-y', '0px');
+            document.querySelectorAll('.ask-chip').forEach(chip => {
+               chip.addEventListener('click', () => ask(chip.dataset.q));
             });
          })();
       </script>

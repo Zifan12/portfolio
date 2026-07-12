@@ -312,11 +312,11 @@ section.home::after {
 section .main-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  padding-inline: clamp(1rem, 6vw, 120px);
-  padding-top: clamp(110px, 18vh, 190px);
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  padding-left: clamp(90px, 14vw, 260px);
+  padding-right: clamp(1rem, 6vw, 120px);
   height: 100%;
 }
 
@@ -341,115 +341,97 @@ section .main-container {
 }
 
 .main-container .content > p {
-  max-width: 60ch;
-  margin-inline: auto;
+  max-width: 52ch;
 }
 
-/* Planet scene: rising world anchored to the bottom edge, cursor parallax via --par-x/--par-y */
-.planet-scene {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: min(120vw, 1100px);
-  height: min(120vw, 1100px);
-  transform: translate(calc(-50% + var(--par-x, 0px)), calc(58% + var(--par-y, 0px)));
-  transition: transform 0.3s ease-out;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  z-index: 1;
+/* Hero ask-bar: real prompt into the Exilus chatbot */
+.hero-ask {
+  margin-top: 26px;
+  width: min(560px, 100%);
 }
 
-.orbit {
-  position: absolute;
-  border: 1px dashed rgba(6, 168, 243, 0.28);
+.ask-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 18px;
+  background: rgba(8, 12, 28, 0.7);
+  border: 1px solid rgba(6, 168, 243, 0.45);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px var(--accent-glow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ask-bar:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 28px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.ask-bar > i {
+  color: var(--accent);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.ask-bar input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.ask-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ask-bar button {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
   border-radius: 50%;
-  pointer-events: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
 }
 
-.orbit-outer {
-  inset: -110px;
-  animation: orbit-spin-3d 46s linear infinite;
+.ask-bar button:hover {
+  filter: brightness(1.15);
 }
 
-.orbit-inner {
-  inset: -54px;
-  animation: orbit-spin-3d 28s linear infinite reverse;
+.ask-bar button:active {
+  transform: scale(0.94);
 }
 
-/* Moon riding the outer ring */
-.orbit-outer::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent-bright);
-  box-shadow: 0 0 12px var(--accent-glow);
+.ask-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
 }
 
-@keyframes orbit-spin-3d {
-  from { transform: rotateX(68deg) rotateZ(0deg); }
-  to { transform: rotateX(68deg) rotateZ(360deg); }
+.ask-chip {
+  padding: 7px 15px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.main-container .profile-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  padding: 4px;
-  background:
-    conic-gradient(from var(--ring-angle, 0deg),
-      transparent 0deg,
-      var(--accent) 60deg,
-      var(--accent-bright) 90deg,
-      transparent 150deg,
-      transparent 200deg,
-      var(--accent-deep) 280deg,
-      transparent 360deg);
-  animation: ring-spin 6s linear infinite, planet-drift 9s ease-in-out infinite;
-  box-shadow:
-    0 0 120px 30px var(--accent-glow-soft),
-    0 0 300px 80px rgba(6, 168, 243, 0.14);
-}
-
-@keyframes planet-drift {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@property --ring-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes ring-spin {
-  to { --ring-angle: 360deg; }
-}
-
-.main-container .profile-image img,
-.main-container .profile-image video {
-  transform: scale(1);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.profile-image img:hover,
-.profile-image video:hover {
-  animation: animate 1.5s ease-in-out infinite;
-}
-
-.hero-greeting {
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 2px;
+.ask-chip:hover {
+  color: white;
+  border-color: var(--accent);
+  background: rgba(6, 168, 243, 0.08);
 }
 
 .hero-name {
@@ -1478,17 +1460,11 @@ section .main-container {
   }
 
   section .main-container {
-    padding: 100px 1rem 0 1rem;
+    padding: 0 1.25rem;
   }
 
   .main-container .content {
     width: 100%;
-    text-align: center;
-  }
-
-  .planet-scene {
-    width: min(150vw, 560px);
-    height: min(150vw, 560px);
   }
 
   /* Rail becomes a centered row above the horizon */
@@ -1507,14 +1483,6 @@ section .main-container {
   .social-links::before,
   .social-links::after {
     display: none;
-  }
-
-  .orbit-outer {
-    inset: -32px;
-  }
-
-  .orbit-inner {
-    inset: -16px;
   }
 
   #about {
@@ -1732,17 +1700,11 @@ section .main-container {
     padding: 6px 8px;
   }
   section .main-container {
-    padding: 120px 1rem 0 1rem;
+    padding: 0 2rem;
   }
 
   .main-container .content {
     width: 100%;
-    text-align: center;
-  }
-
-  .planet-scene {
-    width: min(130vw, 800px);
-    height: min(130vw, 800px);
   }
 
   #about {
@@ -1888,9 +1850,7 @@ section .main-container {
     padding: 6px 8px;
   }
   section .main-container {
-    padding: 100px 40px 0;
-    align-items: center;
-    text-align: center;
+    padding: 0 40px 0 clamp(80px, 10vw, 140px);
   }
 
   .main-container .content {
@@ -1970,10 +1930,6 @@ section .main-container {
     max-width: 1400px;
   }
 
-  .planet-scene {
-    width: min(120vw, 1300px);
-    height: min(120vw, 1300px);
-  }
 }
 
 /* --------------------------- Ultra-wide Desktop styles (1920px+) ---------------------------*/

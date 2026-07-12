@@ -219,5 +219,5 @@ class ChatbotController {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    new ChatbotController();
+    window.zifanChatbot = new ChatbotController();
 });
