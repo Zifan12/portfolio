@@ -20,8 +20,8 @@
          <div class="bg-stars"><span></span><span></span><span></span></div>
       </div>
 
-      <!-- Particle container-->
-      <div id="particles-js"></div>
+      <!-- Neural background canvas -->
+      <canvas id="neural-bg" aria-hidden="true"></canvas>
       
       <!-- navigation menu-->
       <nav>
@@ -448,13 +448,8 @@
        </div>
 
 
-      <!-- Load particles.js -->
-      <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-      <script>
-         particlesJS.load('particles-js', 'particles.json', function() {
-            console.log('particles.js loaded');
-         });
-      </script>
+      <!-- Neural background -->
+      <script src="js/neural.js"></script>
 
       <!-- Load Typed.js -->
       <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>

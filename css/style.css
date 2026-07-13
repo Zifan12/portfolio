@@ -150,17 +150,14 @@ body.home {
   100% { transform: translate3d(-45vh, 45vh, 0) rotate(45deg); opacity: 0; }
 }
 
-#particles-js {
+#neural-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; 
-  pointer-events: auto; /* allow hover interaction */
-}
-#particles-js canvas {
-  pointer-events: auto; /* allow hover interaction with particles */
+  z-index: 0;
+  pointer-events: none;
 }
 
 
