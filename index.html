@@ -78,6 +78,10 @@
                </div>
             </div>
          </div>
+         <div class="neuron-orb orb-1" aria-hidden="true"></div>
+         <div class="neuron-orb orb-2" aria-hidden="true"></div>
+         <div class="neuron-orb orb-3" aria-hidden="true"></div>
+         <div class="neuron-orb orb-4" aria-hidden="true"></div>
          <div class="social-links" data-aos="fade-right" data-aos-duration="800" data-aos-delay="650">
             <a href="https://github.com/Zifan12" target="_blank" aria-label="GitHub">
                <i class="fa-brands fa-github"></i></a>
@@ -549,6 +553,25 @@
             document.querySelectorAll('.ask-chip').forEach(chip => {
                chip.addEventListener('click', () => ask(chip.dataset.q));
             });
+         })();
+      </script>
+      <!-- Hero neuron orbs: cursor depth-parallax -->
+      <script>
+         (() => {
+            if (matchMedia('(pointer: fine)').matches) {
+               const heroSection = document.querySelector('section.home');
+               const orbs = document.querySelectorAll('.neuron-orb');
+               if (heroSection && orbs.length) {
+                  heroSection.addEventListener('pointermove', e => {
+                     const x = ((e.clientX / innerWidth) - 0.5) * 30;
+                     const y = ((e.clientY / innerHeight) - 0.5) * 20;
+                     orbs.forEach(o => {
+                        o.style.setProperty('--ox', x.toFixed(1) + 'px');
+                        o.style.setProperty('--oy', y.toFixed(1) + 'px');
+                     });
+                  });
+               }
+            }
          })();
       </script>
 

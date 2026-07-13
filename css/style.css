@@ -431,6 +431,44 @@ section .main-container {
   background: rgba(6, 168, 243, 0.08);
 }
 
+/* Floating neuron orbs: drift on ::before (animation) so cursor parallax
+   (transform via --ox/--oy) composes instead of fighting. */
+.neuron-orb {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(calc(var(--ox, 0px) * var(--depth, 1)), calc(var(--oy, 0px) * var(--depth, 1)));
+  transition: transform 0.4s ease-out;
+}
+
+.neuron-orb::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, var(--accent-bright), var(--accent) 55%, transparent 78%);
+  filter: blur(var(--orb-blur, 2px));
+  animation: orb-drift var(--drift-time, 10s) ease-in-out infinite alternate;
+  opacity: 0.75;
+}
+
+@keyframes orb-drift {
+  from { transform: translate(0, 0); }
+  to { transform: translate(10px, -14px); }
+}
+
+.orb-1 { top: 24%; right: 18%; width: 22px; height: 22px; --depth: 1.2; --orb-blur: 3px; --drift-time: 11s; }
+.orb-2 { top: 42%; right: 8%;  width: 14px; height: 14px; --depth: 0.5; --orb-blur: 4px; --drift-time: 9s; }
+.orb-3 { top: 64%; right: 26%; width: 26px; height: 26px; --depth: 1.5; --orb-blur: 6px; --drift-time: 13s; }
+.orb-4 { top: 30%; right: 34%; width: 10px; height: 10px; --depth: 0.3; --orb-blur: 2px; --drift-time: 8s; }
+
+@media (max-width: 768px) {
+  .neuron-orb {
+    display: none;
+  }
+}
+
 .hero-name {
   font-family: 'Orbitron', sans-serif;
   font-size: clamp(2.6rem, 5vw + 1rem, 5.5rem);
