@@ -176,6 +176,7 @@ nav {
 }
 
 .nav-container {
+  position: relative;
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
@@ -348,6 +349,7 @@ section .main-container {
 }
 
 .ask-bar {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -370,6 +372,12 @@ section .main-container {
   color: var(--accent);
   font-size: 1.1rem;
   flex-shrink: 0;
+  animation: robot-pulse 3s ease-in-out infinite;
+}
+
+@keyframes robot-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.12); opacity: 1; }
 }
 
 .ask-bar input {
@@ -384,6 +392,35 @@ section .main-container {
 
 .ask-bar input::placeholder {
   color: rgba(255, 255, 255, 0.55);
+}
+
+.nav-container::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+  box-shadow: 0 0 24px var(--accent-glow-soft);
+  opacity: 0.3;
+  animation: glow-breathe 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ask-bar::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 999px;
+  box-shadow: 0 0 30px var(--accent-glow-soft);
+  opacity: 0.35;
+  animation: glow-breathe 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes glow-breathe {
+  from { opacity: 0.25; }
+  to { opacity: 0.9; }
 }
 
 .ask-bar button {
@@ -752,6 +789,31 @@ section .main-container {
   width: 2px;
   transform: translateX(-50%);
   background: linear-gradient(180deg, transparent, var(--accent), var(--accent-deep), transparent);
+}
+
+/* Pulse traveling down the timeline's center line */
+.timeline-v::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 10px var(--accent-glow);
+  opacity: 0;
+  animation: line-pulse 7s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes line-pulse {
+  0% { top: 0; opacity: 0; }
+  6% { opacity: 1; }
+  46% { top: calc(100% - 8px); opacity: 1; }
+  52% { top: calc(100% - 8px); opacity: 0; }
+  100% { top: calc(100% - 8px); opacity: 0; }
 }
 
 .timeline-entry {
@@ -1579,6 +1641,11 @@ section .main-container {
 
   .timeline-v::before {
     left: 24px;
+  }
+
+  .timeline-v::after {
+    left: 24px;
+    margin-left: -3px;
   }
 
   .timeline-entry,

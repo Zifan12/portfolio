@@ -555,6 +555,50 @@
             });
          })();
       </script>
+      <!-- Ask-bar placeholder cycles questions until first interaction -->
+      <script>
+         (() => {
+            const input = document.getElementById('heroAskInput');
+            if (!input) return;
+            const restingText = 'Ask my AI assistant anything about me...';
+            const questions = ['What has Zifan built?', "What's his tech stack?", 'Why should we hire him?'];
+            let qi = 0, ci = 0, deleting = false, stopped = false, timer;
+
+            const stop = () => {
+               if (stopped) return;
+               stopped = true;
+               clearTimeout(timer);
+               input.placeholder = restingText;
+            };
+            input.addEventListener('focus', stop);
+            input.addEventListener('input', stop);
+
+            (function step() {
+               if (stopped) return;
+               const q = questions[qi % questions.length];
+               if (!deleting) {
+                  ci++;
+                  input.placeholder = q.slice(0, ci);
+                  if (ci >= q.length) {
+                     deleting = true;
+                     timer = setTimeout(step, 1800);
+                     return;
+                  }
+                  timer = setTimeout(step, 55);
+               } else {
+                  ci--;
+                  input.placeholder = q.slice(0, ci) || ' ';
+                  if (ci <= 0) {
+                     deleting = false;
+                     qi++;
+                     timer = setTimeout(step, 350);
+                     return;
+                  }
+                  timer = setTimeout(step, 28);
+               }
+            })();
+         })();
+      </script>
       <!-- Hero neuron orbs: cursor depth-parallax -->
       <script>
          (() => {
