@@ -6,8 +6,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
       <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
       <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/chatbot.css">
+      <link rel="stylesheet" href="css/style.css?v=2">
+      <link rel="stylesheet" href="css/chatbot.css?v=2">
       <link rel="icon" type="image/png" href="images/profile/profile_image.png">
       <link rel="shortcut icon" type="image/png" href="images/profile/profile_image.png">
       <title>Zifan Portfolio</title>
@@ -76,23 +76,23 @@
                      <button type="button" class="ask-chip" data-q="Why should we hire Zifan as an intern?">Why hire him?</button>
                   </div>
                </div>
+               <div class="social-links" data-aos="fade-up" data-aos-duration="800" data-aos-delay="750">
+                  <a href="https://github.com/Zifan12" target="_blank" aria-label="GitHub">
+                     <i class="fa-brands fa-github"></i></a>
+                  <a href="https://www.linkedin.com/in/li-zifan/" target="_blank" aria-label="LinkedIn">
+                     <i class="fa-brands fa-linkedin"></i></a>
+                  <a href="https://www.instagram.com/zifan.li_/" target="_blank" aria-label="Instagram">
+                     <i class="fa-brands fa-instagram"></i></a>
+                  <a href="mailto:zifan.li912@gmail.com" aria-label="Email">
+                     <i class="fa-solid fa-envelope"></i>
+                  </a>
+               </div>
             </div>
          </div>
          <div class="neuron-orb orb-1" aria-hidden="true"></div>
          <div class="neuron-orb orb-2" aria-hidden="true"></div>
          <div class="neuron-orb orb-3" aria-hidden="true"></div>
          <div class="neuron-orb orb-4" aria-hidden="true"></div>
-         <div class="social-links" data-aos="fade-right" data-aos-duration="800" data-aos-delay="650">
-            <a href="https://github.com/Zifan12" target="_blank" aria-label="GitHub">
-               <i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/li-zifan/" target="_blank" aria-label="LinkedIn">
-               <i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/zifan.li_/" target="_blank" aria-label="Instagram">
-               <i class="fa-brands fa-instagram"></i></a>
-            <a href="mailto:zifan.li912@gmail.com" aria-label="Email">
-               <i class="fa-solid fa-envelope"></i>
-            </a>
-         </div>
       </section>
 
       <!-- About Section Start -->
@@ -376,7 +376,7 @@
       <!-- Contact Section Start -->
       <section id="contact" class="contact-section">
       <div class="contact-container">
-         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Get in Touch </h2>
+         <h2 class="title contact-title" data-aos="fade-up" data-aos-duration="800"><span>Get in Touch</span></h2>
          <p class="contact-intro" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">Let’s connect! Whether it's collaboration, questions, or just a quick hello.</p>
 
          <form action="https://formspree.io/f/mldlgqrd" method="POST" class="contact-form"  data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500" >
@@ -384,6 +384,7 @@
             <input type="email" name="email" placeholder="Your Email" required />
             <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
          </form>
 
          <div class="contact-info" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700" >
@@ -552,6 +553,43 @@
             });
             document.querySelectorAll('.ask-chip').forEach(chip => {
                chip.addEventListener('click', () => ask(chip.dataset.q));
+            });
+         })();
+      </script>
+      <!-- Contact form: AJAX submit to Formspree, inline status instead of redirect -->
+      <script>
+         (() => {
+            const form = document.querySelector('.contact-form');
+            const status = document.getElementById('formStatus');
+            if (!form || !status) return;
+            form.addEventListener('submit', async e => {
+               e.preventDefault();
+               const button = form.querySelector('button[type="submit"]');
+               button.disabled = true;
+               status.className = 'form-status';
+               status.textContent = 'Sending...';
+               try {
+                  const res = await fetch(form.action, {
+                     method: 'POST',
+                     body: new FormData(form),
+                     headers: { 'Accept': 'application/json' }
+                  });
+                  if (res.ok) {
+                     status.className = 'form-status success';
+                     status.textContent = "Message sent! I'll get back to you soon.";
+                     form.reset();
+                  } else {
+                     const data = await res.json().catch(() => ({}));
+                     status.className = 'form-status error';
+                     status.textContent = data.errors?.map(e => e.message).join(', ')
+                        || 'Something went wrong. Please email me directly.';
+                  }
+               } catch {
+                  status.className = 'form-status error';
+                  status.textContent = 'Network error. Please email me directly.';
+               } finally {
+                  button.disabled = false;
+               }
             });
          })();
       </script>

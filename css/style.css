@@ -291,7 +291,7 @@ section {
 section.home {
   position: relative;
   overflow: hidden;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 /* Fade the horizon into the next section */
@@ -310,12 +310,13 @@ section.home::after {
 section .main-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  text-align: left;
-  padding-left: clamp(90px, 14vw, 260px);
-  padding-right: clamp(1rem, 6vw, 120px);
-  height: 100%;
+  text-align: center;
+  padding-inline: clamp(1.25rem, 6vw, 120px);
+  padding-top: 92px;
+  padding-bottom: 40px;
+  min-height: 100dvh;
 }
 
 @keyframes animate {
@@ -340,11 +341,13 @@ section .main-container {
 
 .main-container .content > p {
   max-width: 52ch;
+  margin-inline: auto;
 }
 
 /* Hero ask-bar: real prompt into the Exilus chatbot */
 .hero-ask {
   margin-top: 26px;
+  margin-inline: auto;
   width: min(560px, 100%);
 }
 
@@ -447,6 +450,7 @@ section .main-container {
 .ask-chips {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   margin-top: 14px;
 }
@@ -497,8 +501,8 @@ section .main-container {
 
 .orb-1 { top: 24%; right: 18%; width: 22px; height: 22px; --depth: 1.2; --orb-blur: 3px; --drift-time: 11s; }
 .orb-2 { top: 42%; right: 8%;  width: 14px; height: 14px; --depth: 0.5; --orb-blur: 4px; --drift-time: 9s; }
-.orb-3 { top: 64%; right: 26%; width: 26px; height: 26px; --depth: 1.5; --orb-blur: 6px; --drift-time: 13s; }
-.orb-4 { top: 30%; right: 34%; width: 10px; height: 10px; --depth: 0.3; --orb-blur: 2px; --drift-time: 8s; }
+.orb-3 { top: 64%; left: 14%; width: 26px; height: 26px; --depth: 1.5; --orb-blur: 6px; --drift-time: 13s; }
+.orb-4 { top: 30%; left: 22%; width: 10px; height: 10px; --depth: 0.3; --orb-blur: 2px; --drift-time: 8s; }
 
 @media (max-width: 768px) {
   .neuron-orb {
@@ -555,32 +559,25 @@ section .main-container {
 }
 
 
-/* Socials: vertical instrument rail on the hero's left edge.
-   Centered with auto margins, not transform (AOS overrides element transforms). */
+/* Socials: horizontal row under the ask-bar, flanked by hairlines */
 .social-links {
-  position: absolute;
-  left: clamp(14px, 2.5vw, 40px);
-  top: 0;
-  bottom: 0;
-  margin-block: auto;
-  height: max-content;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  z-index: 4;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 26px;
 }
 
 .social-links::before,
 .social-links::after {
   content: "";
-  width: 1px;
-  height: clamp(30px, 6vh, 60px);
-  background: linear-gradient(180deg, transparent, var(--accent-glow));
+  height: 1px;
+  width: clamp(30px, 5vw, 60px);
+  background: linear-gradient(90deg, transparent, var(--accent-glow));
 }
 
 .social-links::after {
-  background: linear-gradient(0deg, transparent, var(--accent-glow));
+  background: linear-gradient(270deg, transparent, var(--accent-glow));
 }
 
 
@@ -636,15 +633,6 @@ section .main-container {
 }
 
 /* Projects + Certificates keep their original font, underline matches other sections */
-.projects-title span,
-.certificates-title span {
-  font-family: 'Poppins', sans-serif;
-  font-size: var(--text-4xl);
-  font-weight: 500;
-  letter-spacing: normal;
-  text-shadow: 0 0 40px #0051ff;
-}
-
 /* Muted one-liner under section titles */
 .section-sub {
   text-align: center;
@@ -1113,8 +1101,8 @@ section .main-container {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(27, 50, 200, 0.9);
-  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0 0 24px var(--accent-glow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   justify-content: center;
@@ -1138,10 +1126,10 @@ section .main-container {
 .project-card-bottom {
   width: 100%;
   min-height: fit-content;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid white;
+  background: rgba(8, 12, 28, 0.75);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(27, 50, 200, 0.9);
+  box-shadow: 0 0 24px var(--accent-glow-soft);
   padding: 20px;
   color: white;
   text-align: center;
@@ -1158,12 +1146,14 @@ section .main-container {
 }
 
 .project-tags span {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  padding: 5px 10px;
-  margin: 0 5px;
+  display: inline-block;
+  background: rgba(6, 168, 243, 0.08);
+  border: 1px solid rgba(6, 168, 243, 0.3);
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin: 4px 3px 0;
   font-size: 0.800rem;
-  color: #00aaff;
+  color: var(--accent);
 }
 
 /* Demo Video Link Button */
@@ -1173,22 +1163,30 @@ section .main-container {
   gap: 10px;
   margin-top: 20px;
   padding: 12px 24px;
-  background: rgba(255, 0, 0, 0.1);
-  border: 2px solid #ff0000;
-  border-radius: 8px;
-  color: #ff4444;
+  background: rgba(6, 168, 243, 0.08);
+  border: 1px solid rgba(6, 168, 243, 0.45);
+  border-radius: 999px;
+  color: var(--accent);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  box-shadow: 0 0 14px var(--accent-glow-soft);
+}
+
+.demo-link-yt-btn i {
+  color: #ff5252;
 }
 
 .demo-link-yt-btn:hover {
-  background: #ff0000;
+  background: var(--accent);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
+  box-shadow: 0 5px 22px var(--accent-glow);
+}
+
+.demo-link-yt-btn:hover i {
+  color: white;
 }
 
 
@@ -1199,22 +1197,22 @@ section .main-container {
   gap: 10px;
   margin-top: 20px;
   padding: 12px 24px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 2px solid #3b82f6;
-  border-radius: 8px;
-  color: #3b82f6;
+  background: rgba(6, 168, 243, 0.08);
+  border: 1px solid rgba(6, 168, 243, 0.45);
+  border-radius: 999px;
+  color: var(--accent);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 14px var(--accent-glow-soft);
 }
 
 .demo-link-btn:hover {
-  background: #3b82f6;
+  background: var(--accent);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 5px 22px var(--accent-glow);
 }
 
 .demo-link-btn i {
@@ -1235,8 +1233,8 @@ section .main-container {
 
 .swiper-slide-active .project-card {
   transform: scale(1.1);
-  box-shadow: 0 0 40px rgb(22, 6, 238);
-  border-color: rgb(7, 117, 220);
+  box-shadow: 0 0 36px var(--accent-glow);
+  border-color: rgba(6, 168, 243, 0.6);
 }
 
 .swiper-button-next,
@@ -1249,7 +1247,7 @@ section .main-container {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  color: rgb(6, 105, 204);
+  color: var(--accent);
 }
 
 .project-box {
@@ -1318,16 +1316,18 @@ section .main-container {
   width: min(650px, 100%);
   padding: clamp(15px, 3vw, 20px);
   margin: 0 auto;
-  border: 2px solid #06a8f3;
-  background: rgba(10, 10, 30, 0.9);
-  box-shadow: 0 0 20px #06a8f3, 0 0 40px #06a8f3 inset;
-  transition: transform 0.3s ease;
+  border: 1px solid rgba(6, 168, 243, 0.35);
+  border-radius: 12px;
+  background: rgba(8, 12, 28, 0.75);
+  box-shadow: 0 0 24px var(--accent-glow-soft);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
 }
 
 .cert-card:hover {
   --zoom: 1.05;
-  box-shadow: 0 0 30px #0051ff, 0 0 60px #0051ff inset;
+  border-color: rgba(6, 168, 243, 0.6);
+  box-shadow: 0 0 32px var(--accent-glow);
 }
 
 
@@ -1335,8 +1335,8 @@ section .main-container {
   font-family: 'Orbitron', sans-serif;
   font-size: var(--text-xl);
   margin-top: 15px;
-  color: #06a8f3;
-  text-shadow: 0 0 20px #0051ff;
+  color: #fff;
+  text-shadow: 0 0 18px var(--accent-glow-soft);
   margin-bottom: clamp(20px, 4vw, 35px);
 }
 
@@ -1344,21 +1344,21 @@ section .main-container {
   position: relative;
   display: inline-block;
   margin-top: 35px;
-  background: transparent;
-  color: #00ffe7;
-  border: 1px solid #0051ff;
-  border-radius: 5px;
+  background: rgba(6, 168, 243, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(6, 168, 243, 0.45);
+  border-radius: 999px;
   text-decoration: none;
-  text-shadow: 0 0 20px #0051ff;
-  box-shadow: 0 0 20px #0051ff;
+  font-weight: 600;
+  box-shadow: 0 0 14px var(--accent-glow-soft);
   transition: all 0.3s ease;
-  padding: 10px 20px;
+  padding: 10px 22px;
 }
 
 .view-button:hover {
-  background: white;
-  color: #06a8f3;
-  box-shadow: 20px 5px 20px #0051ff, 0 0 30px #00ffe7;
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 5px 22px var(--accent-glow);
 }
 
 /* -------------------- Contact Styling -------------------- */
@@ -1367,20 +1367,17 @@ section .main-container {
   padding: var(--section-padding-block) var(--section-padding-inline);
 }
 
-.section-title {
-  font-family: 'Orbitron', sans-serif;
-  text-align: center;
-  font-size: var(--text-3xl);
-  letter-spacing: 1px;
-  text-shadow: 0 0 30px var(--accent-glow-soft);
-  margin-bottom: 20px;
+.contact-title {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 20px;
 }
 
 .contact-intro {
   text-align: center;
   margin-bottom: clamp(25px, 4vw, 40px);
   font-size: var(--text-base);
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .contact-form {
@@ -1440,11 +1437,34 @@ section .main-container {
   transform: translateY(1px) scale(0.98);
 }
 
-.contact-info {
-  position: relative;
+.form-status {
   text-align: center;
   font-size: 0.95rem;
-  color: #ccc;
+  min-height: 1.2em;
+  margin-top: 4px;
+}
+
+.form-status.success {
+  color: #4ade80;
+}
+
+.form-status.error {
+  color: #ff6b6b;
+}
+
+.contact-info {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 32px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-info p {
+  margin: 0;
 }
 
 .contact-info a {
@@ -1562,19 +1582,6 @@ section .main-container {
 
   .main-container .content {
     width: 100%;
-  }
-
-  /* Rail becomes a centered row above the horizon */
-  .social-links {
-    flex-direction: row;
-    top: auto;
-    bottom: 56px;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-    width: max-content;
-    height: auto;
-    gap: 14px;
   }
 
   .social-links::before,
