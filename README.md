@@ -1,24 +1,21 @@
 # Zifan's Portfolio Website
 
-A personal portfolio website featuring an AI-powered chatbot built with Retrieval-Augmented Generation (RAG). The chatbot uses semantic search over personal documents to answer questions about my background, skills, and projects.
+A personal portfolio website featuring an AI-powered chatbot built with Retrieval-Augmented Generation (RAG). The chatbot uses semantic search over personal documents to answer questions about my background, skills, and projects — reachable both from a floating widget and a live "ask" bar in the hero.
 
 **Live Site:** [zifan-portfolio.vercel.app](https://zifan-portfolio.vercel.app)
 
 ![Portfolio Preview](images/projects/portfolio_website.png)
 
 ## Features
-## Deployment
 
-| Component | Platform |
-|-----------|----------|
-| Frontend | [Vercel](https://vercel.com/) |
-| Backend | [Render](https://render.com/) |
 ### Portfolio
+- **Living Neural Background** — Custom `<canvas>` animation of nodes and synapses with traveling "thought" pulses; reacts to the cursor and fires cascades on click (replaces particles.js)
+- **Interactive Hero** — Floating neuron orbs with depth parallax, a typewriter role cycler, and a live Exilus ask-bar that sends questions straight to the RAG backend from the landing screen
 - **Responsive Design** — Fully optimized for desktop, tablet, and mobile devices
 - **Interactive Sections** — Home, About, Education, Skills, Projects, Certificates, Contact
 - **Project Carousel** — 3D coverflow effect using Swiper.js
 - **PDF Certificates** — Rendered directly in-browser with PDF.js
-- **Contact Form** — Integrated with Formspree for email submissions
+- **Contact Form** — Integrated with Formspree, submitted over AJAX with inline status feedback
 
 ### AI Chatbot (Exilus)
 - **RAG-Powered** — Retrieves relevant context from personal documents before generating responses
@@ -27,12 +24,20 @@ A personal portfolio website featuring an AI-powered chatbot built with Retrieva
 - **Input Validation** — 500 character limit with sanitization
 - **Powered by GPT-4o-mini** — Fast, cost-effective responses
 
+## Deployment
+
+| Component | Platform | URL |
+|-----------|----------|-----|
+| Frontend | [Vercel](https://vercel.com/) | `zifan-portfolio.vercel.app` |
+| Backend API | [Render](https://render.com/) | `portfolio-chatbot-od42.onrender.com` |
+| Contact Form | [Formspree](https://formspree.io/) | `formspree.io/f/mldlgqrd` |
+
 ## Project Structure
 
 ```
 Portfolio Website/
-├── index.html              # Main HTML file
-├── particles.json          # Particle.js configuration
+├── index.html              # Single-page HTML (all sections)
+├── RESUME.tex              # LaTeX resume source
 ├── README.md
 │
 ├── css/
@@ -40,6 +45,7 @@ Portfolio Website/
 │   └── chatbot.css         # Chatbot component styles
 │
 ├── js/
+│   ├── neural.js           # Neural-canvas background + pulses
 │   └── chatbot.js          # Chatbot frontend logic
 │
 ├── images/
@@ -49,9 +55,11 @@ Portfolio Website/
 │   ├── icons/              # Skill & tech icons (SVG)
 │   ├── profile/            # Profile photos
 │   ├── projects/           # Project screenshots
-│   └── robot/              # Chatbot avatar
+│   ├── robot/              # Chatbot avatar
+│   └── others/             # Resume PDF for download
 │
 ├── documents/              # PDF certificates
+├── videos/                 # Demo/background video assets
 │
 └── backend/
     ├── main.py             # FastAPI server
@@ -77,7 +85,7 @@ Portfolio Website/
 | Technology | Purpose |
 |------------|---------|
 | HTML5 / CSS3 / JavaScript | Core web technologies |
-| [Particle.js](https://vincentgarreau.com/particles.js/) | Interactive background effects |
+| Custom Canvas (`js/neural.js`) | Animated neural background, no library |
 | [Swiper.js](https://swiperjs.com/) | Project carousel with 3D coverflow |
 | [AOS](https://michalsnik.github.io/aos/) | Scroll animations |
 | [Typed.js](https://mattboldt.com/demos/typed-js/) | Typewriter text effect |
@@ -94,4 +102,3 @@ Portfolio Website/
 | [OpenAI API](https://openai.com/) | GPT-4o-mini for response generation |
 | [ChromaDB](https://www.trychroma.com/) | Vector database for semantic search |
 | [SlowAPI](https://github.com/laurentS/slowapi) | Rate limiting |
-
