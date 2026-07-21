@@ -77,12 +77,15 @@ The entire site is a single HTML file with 7 sections, each linked from a fixed 
 
 1. **Home** - Typography-led hero over a living neural-canvas background. Gradient "Zifan Li" name, typewriter role cycler ("CS Student", "AI & ML Enthusiast", "Aspiring AI Engineer"), a short intro, and a **live Exilus ask-bar**: submitting the bar or tapping a suggestion chip opens the chatbot and fires the question at the RAG backend. Four floating neuron orbs drift with cursor parallax; social links (GitHub, LinkedIn, Instagram, Email) sit below.
 2. **About (Introduction)** - Bio paragraph, profile photo, and a "Download Resume" button linking to a PDF.
-3. **Education (Academic Background)** - Horizontal timeline with school logos (Holy Trinity Academy 2020-2023, University of Alberta 2023-Present). Timeline switches to vertical on mobile.
-4. **Skills** - Grid of 15 skill cards with SVG icons: Python, Scikit-learn, PyTorch, LangChain/LangGraph, Matplotlib, SQLite, NumPy, GitHub, OpenAI API, ChromaDB, FastAPI, C, Java, JavaScript, Django.
+3. **Academic Background & Work Experience** - Vertical timeline: Holy Trinity Academy (2020-2023), University of Alberta BSc Computing Science (2023-Present, 4th year, expected 2027), and a Waiter role at New Club Cafe (May-Sep 2024).
+4. **Skills** - Skill cards with SVG icons, grouped into three clusters:
+   - **AI & Machine Learning**: PyTorch, Scikit-learn, LangChain/LangGraph, OpenAI API, Anthropic, OpenRouter, ChromaDB, NumPy, Matplotlib
+   - **Languages**: Python, C, Java, JavaScript, TypeScript
+   - **Backend & Tools**: FastAPI, Django, SQLite, GitHub, PostgreSQL, Docker, Next.js, Streamlit
 5. **Projects** - Swiper.js carousel with 3D coverflow effect displaying 3 projects:
    - Heart Disease Predictor (ML model comparison, Streamlit deployment, SHAP interpretability)
    - Portfolio Website with AI Chatbot (this project itself)
-   - Event Lottery System (Android/Java group project with Firebase)
+   - AI Video Generation Pipeline (multi-stage LLM pipeline generating cinematic POV videos; PostgreSQL/pgvector, LangGraph, Docker; output on TikTok)
 6. **Certificates** - PDF certificates rendered directly in-browser via PDF.js, with "View Credential" links to Coursera/DataCamp.
 7. **Contact** - Form powered by Formspree, submitted over AJAX (fetch) with an inline status message instead of a page redirect. Plus email/GitHub/LinkedIn links.
 
